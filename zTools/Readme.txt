@@ -1,0 +1,1 @@
+The License don't apply to these tools, If I didn't make them.
