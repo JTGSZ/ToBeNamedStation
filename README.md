@@ -1,4 +1,4 @@
 # ToBeNamedStation
-ss13 from nuffin at end of games/byonds life
+a place where i work on dm whenever i suddenly feel a urge to do anything with ss13/dm
 
-filled with bad and random ideas that i will attempt to dynamically connect
+may never end up as anything
