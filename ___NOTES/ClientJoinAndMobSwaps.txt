@@ -1,0 +1,26 @@
+Well I need to keep a note of my current idea of when a person joins at least until I solidify it enough.
+
+ON PLAYER JOIN -------------------
+
+Basically the following will occur.
+/world/Isbanned() - Some dumb shit I don't plan on using
+/client/New() START - New Client this gets called
+
+/mob/Login() - WORLD produced a mob for them to be slammed into and it gets Login called, its the mob specified on world
+
+Thus this should be
+/mob/player_essence/Login() - We need somethin that don't move and do shit except look at a titlescreen and go thru menus.
+	At this stage we will cram a spirit into the player_essence, and add it to the global list if they don't already got one. (EG IN THE OFFCHANCE THEY REJOIN THE TITLESCREEN)
+	/datum/spirit = New() ere
+
+/client/New() END - It finally returns.
+
+
+ON PLAYER MOB SWAP ---------------
+Im not sure which of these would fire first and I don't care right now
+
+/mob/Logout()
+	remove link to /datum/mind
+
+/mob/Login()
+	add link to /datum/mind of thing that crawled into us

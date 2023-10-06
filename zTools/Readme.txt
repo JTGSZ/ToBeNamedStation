@@ -1,1 +1,1 @@
-The License don't apply to these tools, If I didn't make them.
+All these tools are on their original licenses.

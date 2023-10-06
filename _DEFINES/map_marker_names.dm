@@ -1,0 +1,1 @@
+#define MAPMARK_NEWPLAYERSTART "newplayerstart"

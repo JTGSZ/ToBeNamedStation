@@ -1,0 +1,1 @@
+#define world_msg(msg) world << "[msg]"

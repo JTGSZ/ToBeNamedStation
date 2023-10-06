@@ -3,5 +3,4 @@ a place where i work on dm whenever i suddenly feel a urge to do anything with s
 
 may never end up as anything
 
-test
-test
+if it looks schizo its because im trynna have fun ok

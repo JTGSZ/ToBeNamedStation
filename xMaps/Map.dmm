@@ -2,6 +2,10 @@
 "a" = (
 /turf/floor,
 /area)
+"o" = (
+/obj/map_mark/new_player_start,
+/turf/floor,
+/area)
 
 (1,1,1) = {"
 a
@@ -248,7 +252,7 @@ a
 a
 a
 a
-a
+o
 a
 a
 a

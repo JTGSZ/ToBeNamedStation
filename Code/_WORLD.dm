@@ -3,7 +3,7 @@
  */
 
 /world
-	mob = /mob
+	mob = /mob/player_essence
 	turf = /turf/floor
 
 	fps = CONFIG_WORLD_FPS		// 25 frames per second
@@ -14,4 +14,18 @@
 	movement_mode = PIXEL_MOVEMENT_MODE
 
 // Make objects move 8 pixels per tick when walking
+/*
+	Area 
+	Turf
+	Atom/Movable news occur here
+	Basically the map loads in before this is called
+*/
+/world/New()
+	. = ..()
+	world << "Hello world"
 
+/*
+	When the world is told to shutdown this gets called, everything is still there for you to fucks with
+	after it returns everythings dumped out of memory and everything goes byebye
+*/
+/world/Del()

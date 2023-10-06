@@ -1,0 +1,1 @@
+Area Turf Obj and Mob actually spell out ATOM with their first letters but apparently they didn't actually plan on doing that
