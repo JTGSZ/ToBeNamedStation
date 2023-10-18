@@ -28,7 +28,7 @@
 		Basically just calls this
 */
 /mob/Login()
-	world << "Mob Login"
+	//world_msg("Mob Login")
 	//..()
 
 /*
@@ -39,7 +39,7 @@
 		Basically just calls this
 */
 /mob/Logout()
-	world << "Mob Logout"
+	//world_msg("Mob Logout")
 	..()
 	
 	

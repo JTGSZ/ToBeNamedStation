@@ -22,10 +22,16 @@
 */
 /world/New()
 	. = ..()
-	world << "Hello world"
+	world_msg("Hello world") //hehe a helloworld
+	Persistence_Controller = new()
+	
+	Persistence_Controller.admin_json_directory_to_datumlist()
 
 /*
 	When the world is told to shutdown this gets called, everything is still there for you to fucks with
 	after it returns everythings dumped out of memory and everything goes byebye
 */
 /world/Del()
+
+
+

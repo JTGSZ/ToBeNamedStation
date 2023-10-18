@@ -20,3 +20,10 @@ var/global/list/list_of_player_spirits = list()
 
 */
 var/global/list/map_mark_list = list()
+
+/*
+	Assc list of loaded admin datums
+	admin_datums["ckey"] = datum
+	see: admin_holder.dm
+*/
+var/list/admin_datums = list()

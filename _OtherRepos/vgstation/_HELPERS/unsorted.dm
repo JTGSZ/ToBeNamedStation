@@ -35,3 +35,26 @@
 
 	else
 		return "(nullspace)"
+
+//Returns whether or not a player is a guest using their ckey as an input
+/proc/IsGuestKey(key)
+	if (findtext(key, "Guest-", 1, 7) != 1) //was findtextEx
+		return 0
+
+	var/i, ch, len = length(key)
+
+	for (i = 7, i <= len, ++i)
+		ch = text2ascii(key, i)
+		if (ch < 48 || ch > 57)
+			return 0
+	return 1
+
+//Converts a rights bitfield into a string for display purposes
+/proc/rights2text(rights,seperator="")
+	if(rights & R_ADMIN)
+		. += "[seperator]+ADMIN"
+	if(rights & R_DEBUG)
+		. += "[seperator]+DEBUG"
+	if(rights & R_PERMISSIONS)
+		. += "[seperator]+PERMISSIONS"
+	return .

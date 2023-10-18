@@ -27,7 +27,7 @@
 		height = nheight
 	if (nref)
 		ref = nref
-	add_stylesheet("common", '_GPL3/BrowserDatums/common.css') // this CSS sheet is common to all UIs
+	add_stylesheet("common", '_OtherRepos/vgstation/BrowserDatums/common.css') // this CSS sheet is common to all UIs
 
 /datum/browser/proc/add_head_content(nhead_content)
 	head_content = nhead_content
@@ -163,7 +163,7 @@
 
 /datum/browser/clean/New(nuser, nwindow_id, ntitle = 0, nwidth = 0, nheight = 0, var/atom/nref = null)
 	..(nuser,nwindow_id,ntitle,nwidth,nheight,nref)
-	add_stylesheet("common",'_GPL3/BrowserDatums/browser.dm') // Clean style.
+	add_stylesheet("common",'_OtherRepos/vgstation/BrowserDatums/clean.css') // Clean style.
 
 // Re-implemented without the extra divs.
 /datum/browser/clean/get_header()

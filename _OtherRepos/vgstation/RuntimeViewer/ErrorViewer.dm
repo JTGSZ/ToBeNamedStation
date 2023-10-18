@@ -2,12 +2,12 @@
 	ERROR VIEWER
 ----------------- */ 
 
-/mob/verb/view_runtimes()
+/client/proc/view_runtimes()
 	set name = "View Runtimes"
 	set desc = "Open the Runtime Viewer"
 	set category = "Debug"
 
-	error_cache.show_to(src.client)
+	error_cache.show_to(src)
 
 
 // Error viewing datums, responsible for storing error info, notifying admins
