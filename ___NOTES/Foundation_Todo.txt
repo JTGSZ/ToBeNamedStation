@@ -2,37 +2,41 @@ Here are the things I feel a need to port/write a iteration of for a foundationa
 Sub categories need to be done at a more precise time.
 Also to note: don't add things that target content as we just need basic game shit done.
 
-	1. Browser Template: Either one of my old works, or /vg/stations.
+	. Browser Template: Either one of my old works, or /vg/stations.
 		NEEDS: to have js crammed into it easily and nicely.
 		--Browser Chat: Why not.
 
-	3. Runtime Viewer: /vg/station's
-	4. View Variable: /vg/station's, or my own.
+	. Runtime Viewer: /vg/station's
+	. View Variable: /vg/station's, or my own.
 
-	5. MC: /vg/stations
+	. Saycode: mine
+
+	. MC: /vg/stations
 		--Garbage SS.
 
-	6. Saving and Loading:
+	. Saving and Loading:
 		NEEDS: to be simple enough so we will try json for the initial go
 		NEEDS: to also be performant, so idk whether we should cram all their shit into one json file or multiple.
 		Perhaps a folder for ckey and we just store the various things in there, like if we play a one-off modular game.
 
-	7. Opening Menu:
+	. Maploader - /vg/stations or goons if they got one
+
+	. Opening Menu:
 		Prototype: just click a button and spawn in.
 		NEEDS: to support both a whole sum(non ss13) and split part ss13 style icon setup for the char creation.
 		NEEDS: saving and loading
 	
-	8. Char Icon Assembly:
+	. Char Icon Assembly:
 		IDEA 1: standard overlay hell
 		IDEA 2: vis_contents altho we need to recolor all the shits so??
 
-	9. Onscreen UI shit - 
+	. Onscreen UI shit - 
 		NEEDS: Hotbars for skills/abilities
 		NEEDS: simple stuff like cutscenes, displays etc.
 
-	10. Maploader - /vg/stations or goons if they got one
+	
 
-	11. Lighting: Either goonstation or /vg/station. Altho I did do a lighting system once a long time ago.
+	. Lighting: Either goonstation or /vg/station. Altho I did do a lighting system once a long time ago.
 
 
 

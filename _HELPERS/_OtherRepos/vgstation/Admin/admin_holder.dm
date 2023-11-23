@@ -10,7 +10,7 @@
 	We have to associate it to a live client
 	You may ask why? Its because we load ALL the datums in on world init
 */
-/datum/admins/New(initial_rank = "Fag", initial_rights = 0, ckey)
+/datum/admins/New(initial_rank = "Gay", initial_rights = 0, ckey)
 	if(!ckey)
 		world_msg("Admin datum created without a ckey argument. Datum has been deleted. Fuck you")
 		qdel(src)

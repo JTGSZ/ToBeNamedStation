@@ -1,0 +1,88 @@
+From: https://gn32.uk/f/byond-typeids.txt
+Saved here incase it ever disappears lost to time.
+
+00 null
+01 turf, atom
+02 obj, atom/movable
+03 mob
+04 area
+05 client
+06 string
+// 07
+08 type (mob)
+09 type (obj)
+0a type (turf)
+0b type (area)
+0c icon (real icon, not /icon)
+0d image
+0e world
+0f list
+10 args list
+11 verbs var (mob)
+12 verbs var (obj)
+13 verbs var (turf)
+14 verbs var (area)
+15 verbs var (client)
+16 dir var (savefile)
+17 contents var (mob)
+18 contents var (turf)
+19 contents var (area)
+1a contents var (world)
+1b group var (mob)
+1c contents var (obj)
+// 1d
+// 1e
+// 1f
+20 type (datum)
+21 datum (incl most builtin datums)
+// 22
+23 savefile
+24 type (savefile)
+// 25
+26 proc/verb
+27 file
+28 type (list)
+29 modified type
+2a float32
+// 2b
+2c vars var (mob)
+2d vars var (obj)
+2e vars var (turf)
+2f vars var (area)
+30 vars var (client)
+31 vars var (datum)
+32 overlays var (mob)
+33 underlays var (mob) 
+34 overlays var (obj)
+35 underlays var (obj)
+36 overlays var (turf)
+37 underlays var (turf)
+38 overlays var (area)
+39 underlays var (area)
+3a appearance
+3b type (client)
+// 3c
+// 3d
+3e init proc marker (list, object)
+3f type (image)
+40 overlays var (image)
+41 underlays var (image)
+42 vars var (image)
+43 verbs var (image)
+44 contents var (image)
+45 database._binobj, regex._binobj
+46 images var (client)
+47 screen var (client)
+48 vars var (savefile)
+49 vars var (list)
+// 4a
+4b vis_contents var (turf)
+4c vis_contents var (obj)
+4d vis_contents var (mob)
+4e vis_locs var (turf)
+4f vis_locs var (obj)
+50 vis_locs var (mob)
+51 vars var (world)
+52 vars var (global)
+53 filters var
+54 vis_contents var (image)

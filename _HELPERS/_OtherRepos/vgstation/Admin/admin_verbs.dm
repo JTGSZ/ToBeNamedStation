@@ -26,4 +26,5 @@ var/list/superadmin_verbs = list(
 
 var/list/admin_verbs_debug = list(
     /client/proc/view_runtimes,
+    /client/proc/View_Variable
 )

@@ -35,7 +35,10 @@
 
 /* Be careful unless you enjoy iterating a few tens of thousands of times */
 /datum/Admin_Add_and_Remove/proc/display_menu(user)
-	var dat = "Admin Datum list rite here"
+	var dat = "Admin Permissions List"
+	dat += {"
+		<div
+	"}
 	for(var/ass_key in admin_datums)
 		var/actualKey = ass_key
 		if(findtext(ass_key, ".json"))
@@ -68,8 +71,9 @@
 		dat += "</div>"
 
 	var/datum/browser/popup = new(user, "Permissions Menu", "<div align='center'>Permissions Menu</div>", 500, 500)
-	popup.set_content(dat)
-	popup.open(0)
+	popup.html_content = dat
+	popup.quickset_stylesheet(STYLESHEET_SS13_COMMON)
+	popup.fire()
 
 /datum/Admin_Add_and_Remove/Topic(href, href_list)
 	. = ..()
@@ -112,6 +116,7 @@
 				admin_datums.Remove(target_key)
 				qdel(target_datum)
 				usr_msg("Removed [target_key] from permissions.")
+
 
 	Persistence_Controller.admin_datum_to_json(target_datum)
 	display_menu(user)

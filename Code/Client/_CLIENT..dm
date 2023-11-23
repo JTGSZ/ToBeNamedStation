@@ -42,16 +42,23 @@
 
 	//Admin Authorisation
 	var/static/list/localhost_addresses = list("127.0.0.1","::1")
-	if(CONFIG_SERVER_LOCALHOST)
+	if(CONFIG_SERVER_LOCALHOST_POWERS)
 		if((!address && !world.port) || (address in localhost_addresses))
 			var/datum/admins/new_holder = new("Host", R_HOST, src.ckey)
 			new_holder.associate(src)
-			src_msg("HELLO LOCALHOST [holder]")
 
 	if(admin_datums[src.ckey])
 		var/datum/admins/holder = admin_datums[src.ckey]
 		holder.associate(src)
 
+
+/client/Topic(href, href_list, hsrc)
+
+
+
+	//Default action:
+	//Call the hsrc object's own Topic() proc.
+	..()
 	
 
 /*

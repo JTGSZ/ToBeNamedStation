@@ -39,8 +39,11 @@
 
 /datum/error_viewer/proc/browse_to(var/client/user, var/html)
 	var/datum/browser/browser = new(user, "error_viewer", null, 600, 400)
-	browser.set_content(html)
-	browser.add_head_content({"
+	browser.html_content = html
+	//browser.quickset_stylesheet(STYLESHEET_SS13_COMMON)
+
+	browser.quickset_stylesheet(STYLESHEET_SS13_COMMON)
+	browser.html_head_content += {"
 	<style>
 	.runtime
 	{
@@ -56,8 +59,8 @@
 		display: inline-block;
 	}
 	</style>
-	"})
-	browser.open()
+	"}
+	browser.fire()
 
 /datum/error_viewer/proc/build_header(var/datum/error_viewer/back_to, var/linear)
 	// Common starter HTML for show_to

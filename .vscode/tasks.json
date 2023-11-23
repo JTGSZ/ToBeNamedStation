@@ -3,12 +3,12 @@
 	"tasks": [
 		{
 			"type": "dreammaker",
-			"dme": "HahaStation.dme",
+			"dme": "ToBeNamed.dme",
 			"problemMatcher": [
 				"$dreammaker"
 			],
 			"group": "build",
-			"label": "dm: build - HahaStation.dme"
+			"label": "dm: build - ToBeNamed.dme"
 		}
 	]
 }

@@ -7,3 +7,8 @@
 #define src_msg(msg) src << "[msg]"
 #define usr_msg(msg) usr << "[msg]"
 #define dd_msg(msg) world.log << "[msg]"
+#define admin_msg(msg) world << "[msg]"
+#define TODO(msg) world << "TODO: [msg]"
+
+//A dumb macro to just iterate a list and put the contents in a world msg
+#define list_debug(target_list) for(var/i in target_list) world << "[i]"

@@ -7,9 +7,6 @@
 
 // BEGIN_FILE_DIR
 #define FILE_DIR .
-#define FILE_DIR "zAssets"
-#define FILE_DIR "zAssets/Mob"
-#define FILE_DIR "zAssets/pngdump"
 // END_FILE_DIR
 
 // BEGIN_PREFERENCES
@@ -18,6 +15,8 @@
 // BEGIN_INCLUDE
 #include "__DEFINES\__CONFIG__.dm"
 #include "__DEFINES\_DEBUG.dm"
+#include "__DEFINES\_TYPE_MACROS.dm"
+#include "__DEFINES\html_macros.dm"
 #include "__DEFINES\invisibility.dm"
 #include "__DEFINES\map_marker_names.dm"
 #include "__DEFINES\refactor_markers.dm"
@@ -26,21 +25,33 @@
 #include "__DEFINES\_OtherRepos\_vgstation\macros.dm"
 #include "__DEFINES\_OtherRepos\_vgstation\time.dm"
 #include "__DEFINES\_OtherRepos\_vgstation\unsorted.dm"
+#include "__DEFINES\_OtherRepos\goonstation\address.dm"
 #include "_GLOBALS\_unsorted.dm"
 #include "_GLOBALS\important_lists.dm"
 #include "_GLOBALS\singletons.dm"
-#include "_OtherRepos\vgstation\_HELPERS\unsorted.dm"
-#include "_OtherRepos\vgstation\Admin\Admin_Add_Or_Remove.dm"
-#include "_OtherRepos\vgstation\Admin\admin_holder.dm"
-#include "_OtherRepos\vgstation\Admin\admin_verbs.dm"
-#include "_OtherRepos\vgstation\BrowserDatums\browser.dm"
-#include "_OtherRepos\vgstation\RuntimeViewer\ErrorHandler.dm"
-#include "_OtherRepos\vgstation\RuntimeViewer\ErrorViewer.dm"
+#include "_HELPERS\unsorted.dm"
+#include "_HELPERS\_OtherRepos\goonstation\_HELPERS\call_proc.dm"
+#include "_HELPERS\_OtherRepos\goonstation\_HELPERS\compare.dm"
+#include "_HELPERS\_OtherRepos\goonstation\_HELPERS\lists.dm"
+#include "_HELPERS\_OtherRepos\goonstation\_HELPERS\sorting.dm"
+#include "_HELPERS\_OtherRepos\goonstation\_HELPERS\types.dm"
+#include "_HELPERS\_OtherRepos\vgstation\_HELPERS\unsorted.dm"
+#include "_HELPERS\_OtherRepos\vgstation\Admin\Admin_Add_Or_Remove.dm"
+#include "_HELPERS\_OtherRepos\vgstation\Admin\admin_holder.dm"
+#include "_HELPERS\_OtherRepos\vgstation\Admin\admin_verbs.dm"
+#include "_HELPERS\_OtherRepos\vgstation\RuntimeViewer\ErrorHandler.dm"
+#include "_HELPERS\_OtherRepos\vgstation\RuntimeViewer\ErrorViewer.dm"
 #include "Code\_WORLD.dm"
 #include "Code\SpeedTestin.dm"
 #include "Code\_Systems\_DATUM.dm"
+#include "Code\_Systems\BrowserDatum\browser_datum.dm"
 #include "Code\_Systems\player_spirit\player_spirit.dm"
 #include "Code\_Systems\SayCode\PLACEHOLDER.dm"
+#include "Code\_Systems\ViewVariable\ViewVariable.dm"
+#include "Code\_Systems\ViewVariable\ViewVariable_Proclist.dm"
+#include "Code\_Systems\ViewVariable\ViewVariable_Topic.dm"
+#include "Code\_Systems\ViewVariable\ViewVariable_Tools\_ViewVariable_Tools.dm"
+#include "Code\_Systems\ViewVariable\ViewVariable_Tools\ViewVariable_CallProc.dm"
 #include "Code\Area\_AREA.dm"
 #include "Code\Atom\_ATOM.dm"
 #include "Code\Atom\_ATOM_MOVABLE.dm"
@@ -53,5 +64,6 @@
 #include "Code\Turf\_TURF.dm"
 #include "Persistence\JSON\Persistence_JSON.dm"
 #include "xMaps\Map.dmm"
+#include "zInterface\interface_current.dmf"
 // END_INCLUDE
 

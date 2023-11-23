@@ -13,6 +13,8 @@
 	view = CONFIG_WORLD_VIEW
 	movement_mode = PIXEL_MOVEMENT_MODE
 
+	sleep_offline = CONFIG_WORLD_SLEEP_OFFLINE
+
 // Make objects move 8 pixels per tick when walking
 /*
 	Area 

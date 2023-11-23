@@ -1,12 +1,3 @@
-// How many times to retry winset()ing window parameters before giving up
-#define WINSET_MAX_ATTEMPTS 10
-/proc/onclose(mob/user, windowid, var/atom/ref=null)
-	set waitfor = FALSE // winexists sleeps
-	for(var/i in 1 to WINSET_MAX_ATTEMPTS)
-		if(user && winexists(user, windowid))
-			var/param = ref ? "\ref[ref]" : "null"
-			winset(user, windowid, "on-close=\".windowclose [param]\"")
-			break
 
 /proc/time_stamp()
 	return time2text(world.timeofday, "hh:mm:ss")
