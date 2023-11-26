@@ -47,6 +47,7 @@
 #include "Code\_Systems\BrowserDatum\browser_datum.dm"
 #include "Code\_Systems\player_spirit\player_spirit.dm"
 #include "Code\_Systems\SayCode\PLACEHOLDER.dm"
+#include "Code\_Systems\SayCode\BrowserChat\browser_chat.dm"
 #include "Code\_Systems\ViewVariable\ViewVariable.dm"
 #include "Code\_Systems\ViewVariable\ViewVariable_Proclist.dm"
 #include "Code\_Systems\ViewVariable\ViewVariable_Topic.dm"
@@ -56,6 +57,7 @@
 #include "Code\Atom\_ATOM.dm"
 #include "Code\Atom\_ATOM_MOVABLE.dm"
 #include "Code\Client\_CLIENT..dm"
+#include "Code\Client\Input\keyboard_input.dm"
 #include "Code\Mob\_MOB.dm"
 #include "Code\Mob\Immaterial_entities\Player_Essence.dm"
 #include "Code\Mob\Immaterial_entities\Player_Soul.dm"
@@ -64,6 +66,7 @@
 #include "Code\Turf\_TURF.dm"
 #include "Persistence\JSON\Persistence_JSON.dm"
 #include "xMaps\Map.dmm"
-#include "zInterface\interface_current.dmf"
+#include "zInterface\interface_stuff.dm"
+#include "zInterface\interface.dmf"
 // END_INCLUDE
 

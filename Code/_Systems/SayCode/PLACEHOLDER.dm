@@ -1,6 +1,12 @@
 /proc/to_chat(target, message)
 	return world << "UNHANDLED MSG: Target: [target], Message: [message]"
 
+/mob/verb/say_verb(message as text)
+	set name = "Say"
+	set category = "IC"
+	set hidden = 1
+
+	world_msg("[src.name]: [message]")
 /*
 	My thoughts - 
 		We will use hearers() over view()
@@ -18,4 +24,9 @@
 				2. we can mathematically assess what can hear what based on iterating through the entire thing, and some values (EG: Hearing range, whoa super sensitivity)
 				3. In regards to audio, we will signal everything that something is being played at X turf.
 				4. Via this we can raise or lower the volume, recalculating upon movement amount segments, or each movement.
+*/
+
+/*
+	More thoughts - (Specifically about browser chat)
+	There needs to be a browser output that is adjusted to a specific area or some shit
 */

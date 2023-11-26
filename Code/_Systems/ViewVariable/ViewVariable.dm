@@ -1,5 +1,6 @@
 /*
 	This still has a lot to do, gotta make tools on viewvariable_tools to handle stuff with various types in the future.
+	Also for future reference. You can hit ctrl + n to get the link and just literally copy it into any browser
 */
 
 //The options select menu needs redone

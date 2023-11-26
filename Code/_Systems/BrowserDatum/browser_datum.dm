@@ -189,9 +189,9 @@
 /datum/browser/proc/quickset_stylesheet(selected_sheet)
 	switch(selected_sheet)
 		if(STYLESHEET_SS13_COMMON)
-			attach_file('zHTML/ss13common.css')
+			attach_file(STYLESHEET_SS13_COMMON)
 		if(STYLESHEET_VIEW_VARIABLES)
-			attach_file('zHTML/viewvariable.css')
+			attach_file(STYLESHEET_VIEW_VARIABLES)
 
 
 

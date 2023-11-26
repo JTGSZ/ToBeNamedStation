@@ -1,0 +1,301 @@
+macro "macro"
+	elem "TAB"
+		name = "Tab"
+		command = ".winset \"mainwindow.macro=hotkeymode hotkey_toggle.is-checked=true map_pane.map_pane_map.focus=true\""
+	elem 
+		name = "Any"
+		command = ".kbkey-pressed [[*]]"
+	elem 
+		name = "Any+UP"
+		command = ".kbkey-released [[*]]"
+
+
+menu "menu"
+	elem "client_menu"
+		name = "&Client"
+		command = ""
+		saved-params = "is-checked"
+	elem 
+		name = "&Quick screenshot\tF2"
+		command = ".screenshot auto"
+		category = "&Client"
+		saved-params = "is-checked"
+	elem 
+		name = "&Save screenshot as...\tShift+F2"
+		command = ".screenshot"
+		category = "&Client"
+		saved-params = "is-checked"
+	elem 
+		name = ""
+		command = ""
+		category = "&Client"
+		saved-params = "is-checked"
+	elem 
+		name = "Reconnect"
+		command = ".reconnect"
+		category = "&Client"
+		saved-params = "is-checked"
+	elem 
+		name = "&Quit"
+		command = ".quit"
+		category = "&Client"
+		saved-params = "is-checked"
+	elem 
+		name = "&Display"
+		command = ""
+		saved-params = "is-checked"
+	elem "distort"
+		name = "&Nearest-Neighbor"
+		command = ".winset \"map_pane.map_pane_map.zoom-mode=distort\""
+		category = "&Display"
+		can-check = true
+		group = "scaling"
+		saved-params = "is-checked"
+	elem "Normal"
+		name = "&Normal"
+		command = ".winset \"map_pane.map_pane_map.zoom-mode=normal\""
+		category = "&Display"
+		is-checked = true
+		can-check = true
+		group = "scaling"
+		saved-params = "is-checked"
+	elem "blur"
+		name = "&Bilinear"
+		command = ".winset \"map_pane.map_pane_map.zoom-mode=blur\""
+		category = "&Display"
+		can-check = true
+		group = "scaling"
+		saved-params = "is-checked"
+	elem 
+		name = ""
+		command = ""
+		category = "&Display"
+		saved-params = "is-checked"
+	elem "stretch"
+		name = "&Stretch to fit"
+		command = ".winset \"map_pane.map_pane_map.icon-size=0\""
+		category = "&Display"
+		is-checked = true
+		can-check = true
+		group = "size"
+		saved-params = "is-checked"
+	elem 
+		name = ""
+		command = ""
+		category = "&Display"
+		saved-params = "is-checked"
+	elem "icon128"
+		name = "&128x128 (4x)"
+		command = ".winset \"map_pane.map_pane_map.icon-size=128\""
+		category = "&Display"
+		can-check = true
+		group = "size"
+		saved-params = "is-checked"
+	elem "icon96"
+		name = "&96x96 (3x)"
+		command = ".winset \"map_pane.map_pane_map.icon-size=96\""
+		category = "&Display"
+		can-check = true
+		group = "size"
+		saved-params = "is-checked"
+	elem "icon64"
+		name = "&64x64 (2x)"
+		command = ".winset \"map_pane.map_pane_map.icon-size=64\""
+		category = "&Display"
+		can-check = true
+		group = "size"
+		saved-params = "is-checked"
+	elem "icon64"
+		name = "&48x48 (1.5x)"
+		command = ".winset \"map_pane.map_pane_map.icon-size=48\""
+		category = "&Display"
+		can-check = true
+		group = "size"
+		saved-params = "is-checked"
+	elem "icon32"
+		name = "&32x32"
+		command = ".winset \"map_pane.map_pane_map.icon-size=32\""
+		category = "&Display"
+		can-check = true
+		group = "size"
+		saved-params = "is-checked"
+	elem 
+		name = ""
+		command = ""
+		category = "&Display"
+		saved-params = "is-checked"
+	elem "textmode"
+		name = "&Text"
+		command = ".winset \"menu.textmode.is-checked=true?map_pane.map_pane_map.text-mode=true:map_pane.map_pane_map.text-mode=false\""
+		category = "&Display"
+		can-check = true
+		saved-params = "is-checked"
+
+
+window "rightside_horizontal_splitter"
+	elem "rightside_horizontal_splitter"
+		type = MAIN
+		pos = 229,0
+		size = 640x480
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		saved-params = "pos;size;is-minimized;is-maximized"
+		is-pane = true
+	elem "horizontal_splitter"
+		type = CHILD
+		pos = 0,0
+		size = 640x480
+		anchor1 = 0,0
+		anchor2 = 100,100
+		background-color = #000000
+		saved-params = "splitter"
+		left = "stats_pane"
+		right = "text_output_pane"
+		is-vert = false
+
+window "mainwindow"
+	elem "mainwindow"
+		type = MAIN
+		pos = 281,0
+		size = 640x480
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		text-color = #ffffff
+		background-color = #000000
+		is-default = true
+		saved-params = "pos;size;is-minimized;is-maximized"
+		statusbar = false
+		is-maximized = true
+		macro = "macro"
+		menu = "menu"
+	elem "left_right_vertical_splitter"
+		type = CHILD
+		pos = 3,0
+		size = 640x480
+		anchor1 = 0,0
+		anchor2 = 100,100
+		background-color = #000000
+		saved-params = "splitter"
+		left = "map_pane"
+		right = "rightside_horizontal_splitter"
+		is-vert = true
+
+window "map_pane"
+	elem "map_pane"
+		type = MAIN
+		pos = 229,0
+		size = 640x480
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		saved-params = "pos;size;is-minimized;is-maximized"
+		titlebar = false
+		statusbar = false
+		can-close = false
+		can-minimize = false
+		can-resize = false
+		is-pane = true
+	elem "map_pane_map"
+		type = MAP
+		pos = 0,0
+		size = 640x480
+		anchor1 = 0,0
+		anchor2 = 100,100
+		is-default = true
+		saved-params = "icon-size"
+
+window "text_output_pane"
+	elem "text_output_pane"
+		type = MAIN
+		pos = 229,0
+		size = 640x480
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		background-color = #3d2f2f
+		saved-params = "pos;size;is-minimized;is-maximized"
+		is-pane = true
+		outer-size = 656x538
+		inner-size = 640x499
+	elem "native_text_input"
+		type = INPUT
+		pos = 2,460
+		size = 534x20
+		anchor1 = 0,100
+		anchor2 = 100,100
+		text-color = #ffffff
+		background-color = #000000
+		is-default = true
+		border = line
+		saved-params = "command"
+	elem "say_toggle_button"
+		type = BUTTON
+		pos = 536,460
+		size = 40x20
+		anchor1 = 100,100
+		anchor2 = -1,-1
+		text-color = #ffffff
+		background-color = #000000
+		border = line
+		saved-params = "is-checked"
+		text = "Say"
+		command = ".winset \"say_toggle_button.is-checked=true?native_text_input.command=\"!say \\\"\" : native_text_input.command=\"\""
+		is-flat = true
+		button-type = pushbox
+	elem "rp_post_button"
+		type = BUTTON
+		pos = 576,460
+		size = 60x20
+		anchor1 = 100,100
+		anchor2 = -1,-1
+		text-color = #ffffff
+		background-color = #000000
+		border = line
+		saved-params = "is-checked"
+		text = "RP POST"
+		command = ""
+		is-flat = true
+		button-type = pushbox
+	elem "browser_text_output"
+		type = BROWSER
+		pos = 0,0
+		size = 640x456
+		anchor1 = 0,0
+		anchor2 = 100,100
+		background-color = none
+		is-visible = false
+		is-disabled = true
+		saved-params = ""
+	elem "native_text_output"
+		type = OUTPUT
+		pos = 0,0
+		size = 640x456
+		anchor1 = 0,0
+		anchor2 = 100,100
+		text-color = #ffffff
+		background-color = #000000
+		is-default = true
+		saved-params = ""
+
+window "stats_pane"
+	elem "stats_pane"
+		type = MAIN
+		pos = 229,0
+		size = 640x480
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		background-color = #000000
+		saved-params = "pos;size;is-minimized;is-maximized"
+		is-pane = true
+		outer-size = 656x538
+		inner-size = 640x499
+	elem "stats"
+		type = INFO
+		pos = 0,0
+		size = 640x480
+		anchor1 = 0,0
+		anchor2 = 100,100
+		text-color = #ffffff
+		background-color = #000000
+		saved-params = ""
+		tab-text-color = #f8f8f8
+		tab-background-color = #3d2f2f
+

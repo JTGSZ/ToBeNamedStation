@@ -16,3 +16,5 @@
 	loc = null
 	. = ..()
 	
+
+//atom/movable/verb/say_verb()
