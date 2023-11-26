@@ -3,8 +3,8 @@
 	So this is just a place for the shit we define on it so far
 */
 /client
-	//You could potentially have a admin datum INSIDE OF YOU(r client)
-	var/datum/admins/holder = null
+	var/datum/admins/holder = null //You could potentially have a admin datum INSIDE OF YOU(r client)
+	var/datum/browser_chat/browser_chat_instance = null //Our very own browser chat instance
 
 /*
 	The whole chain is weird
@@ -34,11 +34,16 @@
 		del(src)
 		return
 
+	//Should we even attempt to startup browser ui if they cannot even join the server beforehand? It'd just look nice to a guy being ejected automatically for a second.
+	browser_chat_instance = new /datum/browser_chat(src)
+	browser_chat_instance.Load_Browser_Chat()
+	
 	// If you have another place for people to download the rsc
 	preload_rsc = CONFIG_SERVER_RSC_URL
 
-	// So the user doesn't complain if they see stuff slowly loading in as they download the rsc
-	src_msg("If the title screen is black, resources are still downloading. Please be patient until the title screen appears.")
+	// So the user doesn't complain if they see stuff slowly loading in as they download the rsc, in the off-chance we have it set to download while client is ingame.
+	if(preload_rsc == 0)
+		src_msg("If the title screen is black, resources are still downloading. Please be patient until the title screen appears.")
 
 	//Admin Authorisation
 	var/static/list/localhost_addresses = list("127.0.0.1","::1")
@@ -47,9 +52,13 @@
 			var/datum/admins/new_holder = new("Host", R_HOST, src.ckey)
 			new_holder.associate(src)
 
+	//If we have our ckey as a assc id in the admin_datums list, we run the refs both directions between it and this client.
 	if(admin_datums[src.ckey])
 		var/datum/admins/holder = admin_datums[src.ckey]
 		holder.associate(src)
+
+
+
 
 
 /client/Topic(href, href_list, hsrc)

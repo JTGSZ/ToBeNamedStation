@@ -16,5 +16,8 @@
 	var result = end - start
 	world_msg("Time Result: [result]")
 
+/mob/verb/output_testing()
+	src.client.test_message("TEST TEST TESTEST ETSTEST TESTESTSETETSETSET")
+
 
 

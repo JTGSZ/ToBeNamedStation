@@ -6,7 +6,7 @@
 	set category = "IC"
 	set hidden = 1
 
-	world_msg("[src.name]: [message]")
+	src.client.test_message("[src.name]: [message]")
 /*
 	My thoughts - 
 		We will use hearers() over view()

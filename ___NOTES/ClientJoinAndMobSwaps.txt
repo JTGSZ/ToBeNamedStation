@@ -3,7 +3,7 @@ Well I need to keep a note of my current idea of when a person joins at least un
 ON PLAYER JOIN -------------------
 
 Basically the following will occur.
-/world/Isbanned() - Some dumb shit I don't plan on using
+/world/Isbanned() - Some dumb shit
 /client/New() START - New Client this gets called
 
 /mob/Login() - WORLD produced a mob for them to be slammed into and it gets Login called, its the mob specified on world

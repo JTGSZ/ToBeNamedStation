@@ -212,9 +212,12 @@ window "text_output_pane"
 		anchor2 = -1,-1
 		background-color = #3d2f2f
 		saved-params = "pos;size;is-minimized;is-maximized"
+		titlebar = false
+		statusbar = false
+		can-close = false
+		can-minimize = false
+		can-resize = false
 		is-pane = true
-		outer-size = 656x538
-		inner-size = 640x499
 	elem "native_text_input"
 		type = INPUT
 		pos = 2,460
@@ -254,16 +257,6 @@ window "text_output_pane"
 		command = ""
 		is-flat = true
 		button-type = pushbox
-	elem "browser_text_output"
-		type = BROWSER
-		pos = 0,0
-		size = 640x456
-		anchor1 = 0,0
-		anchor2 = 100,100
-		background-color = none
-		is-visible = false
-		is-disabled = true
-		saved-params = ""
 	elem "native_text_output"
 		type = OUTPUT
 		pos = 0,0
@@ -273,6 +266,15 @@ window "text_output_pane"
 		text-color = #ffffff
 		background-color = #000000
 		is-default = true
+		saved-params = ""
+	elem "browser_text_output"
+		type = BROWSER
+		pos = 0,0
+		size = 640x456
+		anchor1 = 0,0
+		anchor2 = 100,100
+		is-disabled = false
+		is-visible = false
 		saved-params = ""
 
 window "stats_pane"
@@ -285,8 +287,6 @@ window "stats_pane"
 		background-color = #000000
 		saved-params = "pos;size;is-minimized;is-maximized"
 		is-pane = true
-		outer-size = 656x538
-		inner-size = 640x499
 	elem "stats"
 		type = INFO
 		pos = 0,0

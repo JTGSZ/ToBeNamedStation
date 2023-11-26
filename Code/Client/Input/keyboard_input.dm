@@ -18,6 +18,8 @@
 			step(M, SOUTH)
 		if("D")
 			step(M, EAST)
+
+	TODO("Movement feels like shit because theres nothing to put a movement loop into yet.")
 			
 	
 //PLACEHOLDER ILL COME BACK TO DOING A INPUTMAP

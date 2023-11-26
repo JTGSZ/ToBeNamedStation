@@ -2,8 +2,8 @@
 
 
 	Basically we have something called invisibility in byond which decides whether you can see/interact with something or not.
-	invisibility - Goes to a grand total of 101 where at 101 the player can't see/interact with something completely. This is a atom var
-	see_invisible - how much invisibility we can see this is a mob var
+	VAR - invisibility - Goes to a grand total of 101 where at 101 the player can't see/interact with something completely. This is a atom var
+	VAR - see_invisible - how much invisibility we can see this is a mob var
 
 
 */

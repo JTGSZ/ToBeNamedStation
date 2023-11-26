@@ -2,12 +2,12 @@ Here are the things I feel a need to port/write a iteration of for a foundationa
 Sub categories need to be done at a more precise time.
 Also to note: don't add things that target content as we just need basic game shit done.
 
-	. Browser Template: Either one of my old works, or /vg/stations.
+	. Browser Template: FINISHED - ME
 		NEEDS: to have js crammed into it easily and nicely.
 		--Browser Chat: Why not.
 
 	. Runtime Viewer: /vg/station's
-	. View Variable: /vg/station's, or my own.
+	. View Variable: FINISHED - ME
 
 	. Saycode: mine
 
@@ -23,20 +23,18 @@ Also to note: don't add things that target content as we just need basic game sh
 
 	. Opening Menu:
 		Prototype: just click a button and spawn in.
-		NEEDS: to support both a whole sum(non ss13) and split part ss13 style icon setup for the char creation.
+		NEEDS: to support both a whole sum(non ss13) and split part style icon setup (mass overlays) for the char creation.
 		NEEDS: saving and loading
 	
 	. Char Icon Assembly:
 		IDEA 1: standard overlay hell
-		IDEA 2: vis_contents altho we need to recolor all the shits so??
+		IDEA 2: vis_contents altho we need to recolor all the shits during runtime so??
 
 	. Onscreen UI shit - 
 		NEEDS: Hotbars for skills/abilities
 		NEEDS: simple stuff like cutscenes, displays etc.
 
-	
-
-	. Lighting: Either goonstation or /vg/station. Altho I did do a lighting system once a long time ago.
+	. Lighting: Either goonstation or /vg/station. Altho I did do a lighting system once a long time ago. But it is ass
 
 
 
