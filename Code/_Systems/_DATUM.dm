@@ -11,6 +11,7 @@
 	Also we don't have queue deletion yet mayb soon
 	Our Qdel pre-step, clean up ur references to other things here.
 */
+/*
 /datum/proc/Destroy()
 	return TRUE
 
@@ -23,3 +24,4 @@
 		del del_target
 	else
 		world << "del_target destroy chain complete."
+*/

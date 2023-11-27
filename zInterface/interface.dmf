@@ -296,6 +296,7 @@ window "stats_pane"
 		text-color = #ffffff
 		background-color = #000000
 		saved-params = ""
+		is-default = true
 		tab-text-color = #f8f8f8
 		tab-background-color = #3d2f2f
 

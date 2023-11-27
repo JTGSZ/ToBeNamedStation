@@ -17,6 +17,7 @@
 #define CONFIG_WORLD_ICON_SIZE 32 //Size of the default icon, effects a buncha shit idc to figure out
 #define CONFIG_WORLD_VIEW "15x15" //Default viewport range, aka how many squares your player sees
 #define CONFIG_WORLD_SLEEP_OFFLINE FALSE //If its set to true, the world just stops doing shit if nobody is on.
+#define CONFIG_WORLD_TICKLAG 0.9 //The world's ticklag
 
 //Persistence Config options
 #define CONFIG_PERSIST_BASEFOLDER "Persistence_Data/" //Basefolder for all persistence shit

@@ -10,5 +10,7 @@
 		
 
 /atom/Destroy()
-	. = ..()
+	
+	invisibility = 101 //WE are trying to delete it, why let people even attempt to see or fucks with it
+	..()
 	

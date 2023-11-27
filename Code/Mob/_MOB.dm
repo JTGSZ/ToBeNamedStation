@@ -43,4 +43,30 @@
 	..()
 	
 
+// lol a stat panel
+//This needs to be put somewhere, probably with the other 50000 mob procs/vars scattered across everything
+/mob/Stat()
+	..()
+
+	if(client && client.holder && client.inactivity < 1200)
+		if(statpanel("MC"))
+			stat("Location:", "([x], [y], [z])")
+			stat("CPU:", "[world.cpu]")
+			stat("Total Instances in World:", "[world.contents.len]")
+			stat("Map CPU:", "[world.map_cpu]")
+
+			stat(null)
+			if(Master)
+				Master.stat_entry()
+			else
+				stat("Master Controller:", "ERROR")
+			if(Failsafe)
+				Failsafe.stat_entry()
+			else
+				stat("Failsafe Controller:", "ERROR")
+			if(Master)
+				stat(null)
+				for(var/datum/subsystem/SS in Master.subsystems)
+					SS.stat_entry()
+
 	

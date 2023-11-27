@@ -17,26 +17,7 @@
  * * associative - whether we are sorting list keys (0: L[i]) or associated values (1: L[L[i]])
  * * from/toIndex - indexes of the list you want to sort from and to
  */
-/proc/sortList(list/L, cmp=/proc/cmp_numeric_asc, associative, fromIndex=1, toIndex=0)
 
-	if(L && (length(L) >= 2))
-		fromIndex = fromIndex % length(L)
-		toIndex = toIndex % (length(L) + 1)
-		if(fromIndex <= 0)
-			fromIndex += length(L)
-		if(toIndex <= 0)
-			toIndex += length(L) + 1
-
-		var/datum/sort_instance/SI = global.sortInstance
-		if(!SI)
-			SI = new
-
-		SI.L = L
-		SI.cmp = cmp
-		SI.associative = associative
-
-		SI.timSort(fromIndex, toIndex)
-	return L
 
 /// Just like [/proc/sortList], but return a sorted copy of the given list
 /proc/sortListCopy(list/L, cmp=/proc/cmp_numeric_asc, associative, fromIndex=1, toIndex=0)

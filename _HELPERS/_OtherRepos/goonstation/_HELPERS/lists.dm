@@ -219,12 +219,7 @@ proc/keep_truthy(some_list)
 		if(x)
 			. += x
 
-/proc/sortNames(var/list/L)
 
-	var/list/Q = new()
-	for(var/atom/x in L)
-		Q[x.name] = x
-	. = sortList(Q, /proc/cmp_text_asc)
 
 /proc/assoc_list_to_list(var/list/l)
 
@@ -337,11 +332,11 @@ proc/params2complexlist(params)
 	for (var/K in L)
 		. += K
 
-/proc/uniquelist(var/list/L)
-
-	. = list()
-	for(var/item in L)
-		. |= item
+///proc/uniquelist(var/list/L)
+//
+//	. = list()
+//	for(var/item in L)
+//		. |= item
 
 #define shuffle_list_interval(x, start, end) \
 	do { \

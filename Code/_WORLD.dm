@@ -29,6 +29,9 @@
 	
 	Persistence_Controller.admin_json_directory_to_datumlist()
 
+	//We start the MC
+	Master.Setup()
+
 /*
 	When the world is told to shutdown this gets called, everything is still there for you to fucks with
 	after it returns everythings dumped out of memory and everything goes byebye
