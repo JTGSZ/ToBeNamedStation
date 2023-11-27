@@ -53,6 +53,8 @@
 #include "_HELPERS\_OtherRepos\vgstation\master_controller\master.dm"
 #include "_HELPERS\_OtherRepos\vgstation\master_controller\subsystems.dm"
 #include "_HELPERS\_OtherRepos\vgstation\master_controller\subsystems\garbage.dm"
+#include "_HELPERS\_OtherRepos\vgstation\master_controller\subsystems\generic_process.dm"
+#include "_HELPERS\_OtherRepos\vgstation\master_controller\subsystems\physics_process.dm"
 #include "_HELPERS\_OtherRepos\vgstation\RuntimeViewer\ErrorHandler.dm"
 #include "_HELPERS\_OtherRepos\vgstation\RuntimeViewer\ErrorViewer.dm"
 #include "Code\_WORLD.dm"

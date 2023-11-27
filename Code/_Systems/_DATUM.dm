@@ -25,3 +25,6 @@
 	else
 		world << "del_target destroy chain complete."
 */
+/datum/proc/Process()
+
+/datum/proc/physics_process()

@@ -1,7 +1,4 @@
 macro "macro"
-	elem "TAB"
-		name = "Tab"
-		command = ".winset \"mainwindow.macro=hotkeymode hotkey_toggle.is-checked=true map_pane.map_pane_map.focus=true\""
 	elem 
 		name = "Any"
 		command = ".kbkey-pressed [[*]]"
