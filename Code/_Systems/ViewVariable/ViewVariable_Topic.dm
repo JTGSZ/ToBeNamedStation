@@ -2,7 +2,7 @@
 	We still got a long way to go really
 */
 
-/datum/view_variable/Topic(href, href_list, hsrc)
+/datum/ui/view_variable/Topic(href, href_list, hsrc)
 	. = ..()
 	if(href_list["window_closed"])
 		qdel(our_window)
@@ -12,7 +12,7 @@
 	if(href_list["ListProcs"])
 		var/target_thing = locate(href_list["ListProcs"])
 		if(target_thing)
-			var/datum/view_variable_proclist/fug = new(requestor, target_thing)
+			var/datum/ui/view_variable_proclist/fug = new(requestor, target_thing)
 			fug.show_proc_list()
 	if(href_list["SetDirection"])
 		var/atom/target_thing = locate(href_list["SetDirection"])
@@ -33,4 +33,10 @@
 					if (dir_set)
 						target_thing.dir = text2dir(dir_set)
 						usr_msg("Set [target_thing]'s direction to [dir_set]")
-			
+
+	if(href_list["ViewReference"])
+		var target_object = locate(href_list["ViewReference"])
+		if(target_object)
+			requestor.View_Variable(target_object)
+
+		

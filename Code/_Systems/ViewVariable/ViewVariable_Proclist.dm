@@ -2,12 +2,10 @@
 	Yeah yeah, all of this shits gross looking but at least client isn't loaded with a ton of menus sitting on it
 	Also special thanks to goonstation for the code
 */
-/datum/view_variable_proclist
-	var/datum/browser/our_window //Well we need to hold a ref to the browser window due to this setup.
-	var/client/requestor
+/datum/ui/view_variable_proclist
 	var/datum/target
 
-/datum/view_variable_proclist/New(requestor_client, target_datum)
+/datum/ui/view_variable_proclist/New(requestor_client, target_datum)
 	..()
 	if(requestor_client)
 		requestor = requestor_client
@@ -15,7 +13,7 @@
 		target = target_datum
 	
 
-/datum/view_variable_proclist/proc/show_proc_list() // null for global
+/datum/ui/view_variable_proclist/proc/show_proc_list() // null for global
 	if(!target || !requestor)
 		return
 
@@ -38,9 +36,9 @@
 	our_window = new(requestor, "proc_list", null, 600, 450, src)
 	our_window.html_content = lines
 	our_window.quickset_stylesheet(STYLESHEET_VIEW_VARIABLES)
-	our_window.fire()
+	our_window.fire_browser()
 
-/datum/view_variable_proclist/Topic(href, href_list)
+/datum/ui/view_variable_proclist/Topic(href, href_list)
 	. = ..()
 	if(href_list["window_closed"])
 		qdel(our_window)

@@ -99,7 +99,7 @@ List of hard deletions:"}
 			fakedels += D
 			if(ismovable(D))
 				delete_profile("[D.type]", 1) //Del() doesn't get called in this case so it's not, in fact, handled for movables
-			to_chat(world, "<a href='?_src_=vars;Vars=[refID]'>["[D]" || "(Blank name)"]</a>")
+			world_msg( "<a href='?_src_=vars;Vars=[refID]'>["[D]" || "(Blank name)"]</a>")
 			#undef GC_REFDEBUG
 			#else
 			del D
@@ -141,7 +141,7 @@ List of hard deletions:"}
 #ifdef GC_FINDREF
 /world/loop_checks = 0
 
-#define FINDREF_OUTPUT(msg) to_chat(world, msg);testing(msg)
+#define FINDREF_OUTPUT(msg) world_msg(msg);testing(msg)
 
 /datum/subsystem/garbage/proc/FindRef(datum/D)
 	FINDREF_OUTPUT("GC: Searching references for [ref(D)] [D] | [D.type]")
@@ -216,7 +216,7 @@ List of hard deletions:"}
 	ASSERT(istype(user))
 	var/refID = queue[i]
 	var/datum/D = locate(refID)
-	to_chat(user, "<a href='?_src_=vars;Vars=[refID]'>["[D]" || "(Blank name)"]</a> at [queue[refID]] ([(world.timeofday - queue[refID]) / 10] seconds ago)")
+	world_msg( "<a href='?_src_=vars;Vars=[refID]'>["[D]" || "(Blank name)"]</a> at [queue[refID]] ([(world.timeofday - queue[refID]) / 10] seconds ago)")
 
 /client/proc/gc_dump_hdl()
 	set name = "(GC) Hard Del List"
@@ -228,7 +228,7 @@ List of hard deletions:"}
 	for(var/A in ghdel_profiling)
 		L += "<br>[A] = [ghdel_profiling[A]]"
 	if(L.len == 1)
-		to_chat(usr, "No garbage collector deletions in the current server run.")
+		world_msg( "No garbage collector deletions in the current server run.")
 		return
 	usr << browse(jointext(L,""),"window=harddellogs")
 

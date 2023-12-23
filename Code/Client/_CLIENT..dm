@@ -2,9 +2,20 @@
 	Parent of client shit.... although client can't handle children neways afaik.
 	So this is just a place for the shit we define on it so far
 */
+//global list of clients
+var/global/list/clients = list()
+
 /client
-	var/datum/admins/holder = null //You could potentially have a admin datum INSIDE OF YOU(r client)
-	var/datum/browser_chat/browser_chat_instance = null //Our very own browser chat instance
+	control_freak = CONTROL_FREAK_MACROS
+
+	var/datum/admins/holder //You could potentially have a admin datum INSIDE OF YOU(r client)
+	var/datum/browser_chat/browser_chat_instance //Our very own browser chat instance
+	var/datum/player_persistence_data/persist_data // A ref to our client's data on player_persistence_data, unneeded but here you go.
+
+	//Input Related
+	var/list/input_keymap = list() // the input map for keys on the client, the input map on persist data is the one thats saved/loaded though.
+	var/list/movement_keymap = list() //The list of movement keys, mostly to allow movement while other shit is going on
+	var/list/held_keymap = list() // List of currently held down keys
 
 /*
 	The whole chain is weird
@@ -15,8 +26,6 @@
 	If null is also returned on this, we jus disconnect the person too
 */
 /client/New()
-	..()	//calls mob.Login()
-
 	if(connection != "seeker")	//Invalid connection type.
 		if(connection == "web") //The webclient hasn't been updated in forever anyways.
 			if(!holder)
@@ -33,6 +42,15 @@
 		alert(src,"This server doesn't allow guest accounts to play. Please go to http://www.byond.com/ and register for a key.","Guest","OK")
 		del(src)
 		return
+
+	..()	//calls mob.Login()
+
+	//Enter us into the clients global list.
+	clients += src
+
+	//Time to retrieve our persistence data bro, we probably got a bunch of shit that could use it past this point.
+	persist_data = Persistence_Controller.handle_player_data(src) // You are getting something here whether you like it or not
+	sync_input_keymaps() //Sync the input keymaps.
 
 	//Should we even attempt to startup browser ui if they cannot even join the server beforehand? It'd just look nice to a guy being ejected automatically for a second.
 	browser_chat_instance = new /datum/browser_chat(src)
@@ -57,14 +75,11 @@
 		var/datum/admins/holder = admin_datums[src.ckey]
 		holder.associate(src)
 
-
-
-
+	//change client fps sometime, it will help their shit out
+	fps = (persist_data.client_fps < 0) ? CONFIG_PREF_RECC_CLIENT_FPS : persist_data.client_fps
+	
 
 /client/Topic(href, href_list, hsrc)
-
-
-
 	//Default action:
 	//Call the hsrc object's own Topic() proc.
 	..()
@@ -76,5 +91,37 @@
 /client/Del()
 	if(holder)
 		holder.owner = null
+	clients -= src
 
 	return ..()
+
+
+/*
+	Why yes, the client does have a move proc
+	The built in client proc only got these two things
+*/
+/client/Move(loc, dir) 
+	if(!isturf(mob.loc))
+		var/atom/movable/vore_mommy = mob.loc // we don't really need areas and turfs involved in our fuckery
+		vore_mommy.relayMove(src, dir)
+	else
+		step(mob, dir)
+	//. = ..()
+	
+
+
+//Realistically, I don't see this being used for anything other than ooc.
+//In fact its kind of shit, but its here anyways until i need to rewrite everything.
+/client/proc/send_message(message)
+	var/datum/message_data/msg_data = new(src, world.view)
+	msg_data.message = "[key]: [message]"
+	msg_data.message_color = persist_data.OOC_text_color
+	route_message_all_clients(msg_data)
+
+//And heres send_message's dumbass companion,
+//To note we are going to actually display this message in the client's chatbox from here, so might as well let things be different per client from client potentially
+/client/proc/receive_message(datum/message_data/msg_data)
+	var/parsed_data = "<span style=\"color:[msg_data.message_color]\">[msg_data.message]</span>"
+	to_client_chat(src, parsed_data)
+	
+

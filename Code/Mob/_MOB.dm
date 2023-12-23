@@ -2,23 +2,20 @@
 	MOB PARENT
 */
 /mob
-	step_size = 8
 
-	//A var to hold the player_spirit which is jus a container of data tied to the player
-	// If we don't see any reason to move this to other mobs then it can jus be moved up to player_essence and player_soul
-	// We can't move it to atom/movable as theres no place for a key so whats the point
-	var/datum/player_spirit/current_spirit = null
+	//This basically just contains ic player information, this is made on a soul.
+	var/datum/player_mind/player_mind = null
 
 /*
 	Called when we are first created
 */
 /mob/New()
-	..()
+	. = ..()
 /*
 	Called when we are qdel'd
 */
 /mob/Destroy()
-	. = ..()
+	..()
 /*
 	ON_INITIAL_CONNECTION -
 		Basically client/New() calls this before it returns
@@ -27,7 +24,12 @@
 	ON_MOB_SWAP - The scenario where you either set key = newshit or client.mob = whatev fuckin mob
 		Basically just calls this
 */
+/mob/Move(NewLoc, Dir, step_x, step_y)
+	. = ..()
+	
+
 /mob/Login()
+
 	//world_msg("Mob Login")
 	//..()
 
@@ -42,12 +44,29 @@
 	//world_msg("Mob Logout")
 	..()
 	
+/mob/send_message(msg_data)
+	if(!msg_data)
+		return
 
-// lol a stat panel
-//This needs to be put somewhere, probably with the other 50000 mob procs/vars scattered across everything
+	route_message_local(msg_data)
+
+//Well we are the only thing that can have both a listener and a client i guess, so just pass it along if we actually have a client.
+/mob/receive_message(datum/message_data/msg_data)
+	if(client)
+		client.receive_message(msg_data)
+
+/*
+	A mob with a client clicked on an atom and supercalled. 
+	Let us give them a response on the instance of their type or near it
+*/
+/mob/proc/clicked_an_atom(atom/A, params)
+	return
+
+// A stat panel if you are on a mob.
 /mob/Stat()
 	..()
 
+	//MC Stat Panel
 	if(client && client.holder && client.inactivity < 1200)
 		if(statpanel("MC"))
 			stat("Location:", "([x], [y], [z])")

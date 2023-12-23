@@ -27,4 +27,3 @@
 */
 /datum/proc/Process()
 
-/datum/proc/physics_process()

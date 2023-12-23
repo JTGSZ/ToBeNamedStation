@@ -12,9 +12,6 @@
 
 //SubSystem flags (Please design any new flags so that the default is off, to make adding flags to subsystems easier)
 
-//subsystem should fire during pre-game lobby.
-//#define SS_FIRE_IN_LOBBY 1
-
 //subsystem does not initialize.
 #define SS_NO_INIT 2
 
@@ -54,6 +51,3 @@
 #define SS_SLEEPING 4 // fire() slept.
 #define SS_PAUSING 5  // in the middle of pausing
 
-//Timing subsystem
-#define TIMER_NORMAL "normal"
-#define TIMER_UNIQUE "unique"

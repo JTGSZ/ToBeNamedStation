@@ -2,7 +2,7 @@
 	Basically a hastily shit together window so the host can add and remove admins ingame if they don't want to just manually make json files
 */
 
-
+var/datum/Admin_Add_and_Remove/Admin_Add_and_Remove
 
 /datum/Admin_Add_and_Remove
 
@@ -73,7 +73,7 @@
 	var/datum/browser/popup = new(user, "Permissions Menu", "<div align='center'>Permissions Menu</div>", 500, 500)
 	popup.html_content = dat
 	popup.quickset_stylesheet(STYLESHEET_SS13_COMMON)
-	popup.fire()
+	popup.fire_browser()
 
 /datum/Admin_Add_and_Remove/Topic(href, href_list)
 	. = ..()

@@ -1,4 +1,11 @@
 
+/*
+	Assc list of loaded admin datums
+	admin_datums["ckey"] = datum
+	see: admin_holder.dm
+*/
+
+var/global/list/admin_datums = list()
 
 /datum/admins
 	var/owner_ckey 		= "ERROR" //Their ckey

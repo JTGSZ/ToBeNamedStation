@@ -1,12 +1,12 @@
 /*
 	Probably unnecessary but why not lol
 */
+var/datum/Persistence_JSON/Persistence_Controller
 
 /datum/Persistence_JSON
 
-
 /*
-	Some JSON helpers so I don't forget how this shit works and its the prelinary way i will save more pre
+	Some JSON helpers so I don't forget how this shit works later
 */
 
 //Target path must be a string

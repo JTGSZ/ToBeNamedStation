@@ -1,1 +1,0 @@
-Just gonna slam this in real quick, ill get back to inputs. I need a loop to process keys anyways, which will come after I get a MC. Which will be a bit after saycode

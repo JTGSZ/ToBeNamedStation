@@ -6,7 +6,7 @@
   * Odds are, there is a reason
   *
  **/
-var/datum/controller/master/Master = new()
+var/datum/controller/master/Master
 var/MC_restart_clear = 0
 var/MC_restart_timeout = 0
 var/MC_restart_count = 0
@@ -63,13 +63,6 @@ var/CURRENT_TICKLIMIT = TICK_LIMIT_RUNNING
 			init_subtypes(/datum/subsystem, subsystems)
 		Master = src
 
-/*
-/datum/controller/master/Destroy()
-	..()
-	// Tell qdel() to Del() this object.
-	return QDEL_HINT_HARDDEL_NOW
-*/
-
 /datum/controller/master/proc/Shutdown()
 	processing = FALSE
 	for(var/datum/subsystem/ss in subsystems)
@@ -114,7 +107,7 @@ var/CURRENT_TICKLIMIT = TICK_LIMIT_RUNNING
 		spawn (10)
 			StartProcessing()
 	else
-		to_chat(world, "<span class='boldannounce'>The Master Controller is having some issues, we will need to re-initialize EVERYTHING</span>")
+		world_msg("<span class='boldannounce'>The Master Controller is having some issues, we will need to re-initialize EVERYTHING</span>")
 		spawn (20)
 			init_subtypes(/datum/subsystem, subsystems)
 			Setup()
@@ -132,7 +125,7 @@ var/CURRENT_TICKLIMIT = TICK_LIMIT_RUNNING
 	CURRENT_TICKLIMIT = TICK_LIMIT_MC_INIT_DEFAULT
 	sortTim(subsystems, /proc/cmp_subsystem_init)
 	var/time_to_init = world.timeofday
-	to_chat(world, "<span class='boldannounce'>Initializing subsystems...</span>")
+	world_msg("<span class='boldannounce'>Initializing subsystems...</span>")
 	for (var/datum/subsystem/SS in subsystems)
 		if (SS.flags & SS_NO_INIT)
 			continue
@@ -148,25 +141,11 @@ var/CURRENT_TICKLIMIT = TICK_LIMIT_RUNNING
 
 	// Sort subsystems by display setting for easy access.
 	sortTim(subsystems, /proc/cmp_subsystem_display)
-	// Set world options.
-	world.tick_lag = CONFIG_WORLD_TICKLAG
 	sleep(1)
 	// Loop.
 	Master.StartProcessing()
 
-//We don't have a seperation between init lobby and live so we don't need this.
-// Notify the MC that the round has started.
-/*
-/datum/controller/master/proc/RoundStart()
-	round_started = 1
-	var/timer = world.time
-	for (var/datum/subsystem/SS in subsystems)
-		if (SS.flags & SS_FIRE_IN_LOBBY || SS.flags & SS_TICKER) 
-			continue //already firing
-		// Stagger subsystems.
-		timer += world.tick_lag * rand(1, 5)
-		SS.next_fire = timer
-*/
+
 // Starts the mc, and sticks around to restart it if the loop ever ends.
 /datum/controller/master/proc/StartProcessing()
 	set waitfor = 0
@@ -425,7 +404,7 @@ var/CURRENT_TICKLIMIT = TICK_LIMIT_RUNNING
 				queue_node = queue_node.queue_next
 				continue
 
-			queue_node.ticks = MC_AVERAGE(queue_node.ticks, queue_node.paused_ticks)
+			queue_node.ticks = MC_AVERAGE(queue_node.ticks, queue_node.paused_ticks) // this is doing some sus AND useless shit, just a fyi. - JTGSZ
 			tick_usage += queue_node.paused_tick_usage
 
 			queue_node.tick_usage = MC_AVERAGE_FAST(queue_node.tick_usage, tick_usage)

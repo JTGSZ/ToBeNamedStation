@@ -1,11 +1,10 @@
-macro "macro"
+macro "base_macro"
 	elem 
 		name = "Any"
-		command = ".kbkey-pressed [[*]]"
+		command = ".key-pressed [[*]]"
 	elem 
 		name = "Any+UP"
-		command = ".kbkey-released [[*]]"
-
+		command = ".key-released [[*]]"
 
 menu "menu"
 	elem "client_menu"
@@ -127,6 +126,28 @@ menu "menu"
 		category = "&Display"
 		can-check = true
 		saved-params = "is-checked"
+	elem 
+		name = ""
+		command = ""
+		category = "&Display"
+		saved-params = "is-checked"
+	elem "changefps"
+		name = "&Change FPS"
+		command = ".change_fps"
+		category = "&Display"
+	elem 
+		name = "Options"
+		command = ""
+		saved-params = "is-checked"
+	elem 
+		name = "&Rebind Keys"
+		command = ".display_input_ui"
+		category = "Options"
+	elem 
+		name = "&Misc Pref Options"
+		command = ".display_pref_ui"
+		category = "Options"
+
 
 
 window "rightside_horizontal_splitter"
@@ -163,7 +184,7 @@ window "mainwindow"
 		saved-params = "pos;size;is-minimized;is-maximized"
 		statusbar = false
 		is-maximized = true
-		macro = "macro"
+		macro = "base_macro"
 		menu = "menu"
 	elem "left_right_vertical_splitter"
 		type = CHILD
@@ -251,7 +272,7 @@ window "text_output_pane"
 		border = line
 		saved-params = "is-checked"
 		text = "RP POST"
-		command = ""
+		command = ".display_rp_post_ui"
 		is-flat = true
 		button-type = pushbox
 	elem "native_text_output"
@@ -270,7 +291,6 @@ window "text_output_pane"
 		size = 640x456
 		anchor1 = 0,0
 		anchor2 = 100,100
-		is-disabled = false
 		is-visible = false
 		saved-params = ""
 
@@ -292,8 +312,7 @@ window "stats_pane"
 		anchor2 = 100,100
 		text-color = #ffffff
 		background-color = #000000
-		saved-params = ""
 		is-default = true
+		saved-params = ""
 		tab-text-color = #f8f8f8
 		tab-background-color = #3d2f2f
-

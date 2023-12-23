@@ -12,7 +12,7 @@
 	return src
 
 /obj/effect/statclick/time/Click()
-	to_chat(usr,"<span class='notice'>The server time is [time2text(world.timeofday, "hh:mm:ss")].</span>")
+	world_msg("<span class='notice'>The server time is [time2text(world.timeofday, "hh:mm:ss")].</span>")
 
 /obj/effect/statclick/debug
 	var/class

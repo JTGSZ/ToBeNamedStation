@@ -9,24 +9,21 @@
 	set desc = "View the variables"
 	set category = "Debug"
 
-	var/datum/view_variable/ass = new()
+	var/datum/ui/view_variable/ass = new()
 	ass.requestor = src
 	ass.display_vv_menu(D)
 
 //IS THIS SHIT BEING GARBAGE COLLECTED BECAUSE I HAVE MADE ZERO REFS AND \REF DOESN'T COUNT? the answer is yes it is. So we have to stash a ref somewhere and clean it.
 //heres where vars would go aka a definition
-/datum/view_variable
-	var/datum/browser/our_window //Well we need to hold a ref to the browser window due to this setup.
-	var/client/requestor //We also need the person requesting shit held somewhere.
-
-
+/datum/ui/view_variable
 
 
 //the menu
-/datum/view_variable/proc/display_vv_menu(datum/D)
+/datum/ui/view_variable/proc/display_vv_menu(datum/D)
 	if(!D) // If theres nothing just stop here
 		return
 
+	var/window_title = "(\ref[D]) = [D.type]"
 	//Our title will change depending on whats going on anyways.
 	var/title = ""
 
@@ -35,8 +32,10 @@
 	if(isatom(D))
 		var/atom/A = D
 		title = "<img src='\ref[D]'> <br> [A.name] (\ref[A]) = [A.type]"
+		window_title = "[A.name] [window_title]"
 	else 
 		title = "*NO ICON* <br> (\ref[D]) = [D.type]"
+		
 
 	//These are just hrefs in a dropdown, you click one and it location.href = it. See: https://developer.mozilla.org/en-US/docs/Web/API/Location
 	//I could do something fancy to process all of these, but for clarities sake just copy and paste more shit in.
@@ -167,12 +166,21 @@
 
 			var/list/list_sex = list()
 			for(var/cur_list_value in var_value)
-				list_sex += "[cur_list_value]<br>"
+				if(isdatum(cur_list_value)) // Its a ref to something instanced lol.
+					var/datum/target_ref = cur_list_value
+					list_sex += "<a href='byond://?src=\ref[src];ViewReference=\ref[cur_list_value]'>[target_ref.type]</a><br>"
+				else
+					list_sex += "[cur_list_value]<br>"
 
 			list_sex = jointext(list_sex, "")
 			html += "<td class=varvalue>[list_sex]</td>"
 		else
-			html += "<td class=varvalue>[D.vars[cur_var]]</td>"
+			if(isdatum(D.vars[cur_var]) || isclient(D.vars[cur_var])) // Once again this is a ref
+				html += "<td class=varvalue><a href='byond://?src=\ref[src];ViewReference=\ref[D.vars[cur_var]]'>[D.vars[cur_var].type]</a></td>"
+			else if(D.vars[cur_var])
+				html += "<td class=varvalue>[D.vars[cur_var]]</td>"
+			else //this should be null
+				html += "<td class=varvalue>NULL</td>"
 
 		//The closing tag for the row, we are still in the loop fyi
 		html += "</tr>"
@@ -227,7 +235,7 @@
 	//			}
 	//			list.blur();		
 	//And here it is, our browser window, we are sending ourselves to have a onclose topic call on close too.
-	our_window = new(requestor, "variables", null, 600, 450, src)
+	our_window = new(requestor, "variables", window_title, 600, 450, src)
 	our_window.html_content = html
 	our_window.quickset_stylesheet(STYLESHEET_VIEW_VARIABLES)
-	our_window.fire()
+	our_window.fire_browser()

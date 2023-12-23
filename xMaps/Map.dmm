@@ -6,6 +6,10 @@
 /obj/map_mark/new_player_start,
 /turf/floor,
 /area)
+"J" = (
+/mob/humanoid,
+/turf/floor,
+/area)
 
 (1,1,1) = {"
 a
@@ -377,7 +381,7 @@ a
 a
 a
 a
-a
+J
 a
 a
 a

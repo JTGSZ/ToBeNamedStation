@@ -1,5 +1,5 @@
 
-var/datum/view_variable_tools/VV_Tools = new() //TODO: Move this somewhere better
+var/datum/view_variable_tools/VV_Tools
 
 /datum/view_variable_tools
 

@@ -13,15 +13,25 @@
 #define CONFIG_SERVER_RSC_URL 1
 
 //World config options
-#define CONFIG_WORLD_FPS 32 //Basically how fast we processin shit on the world's end
+#define CONFIG_WORLD_FPS 40 //Basically how fast we processin shit on the world's end
 #define CONFIG_WORLD_ICON_SIZE 32 //Size of the default icon, effects a buncha shit idc to figure out
-#define CONFIG_WORLD_VIEW "15x15" //Default viewport range, aka how many squares your player sees
+#define CONFIG_WORLD_VIEW 8 //Default viewport range, aka how many squares your player sees
 #define CONFIG_WORLD_SLEEP_OFFLINE FALSE //If its set to true, the world just stops doing shit if nobody is on.
-#define CONFIG_WORLD_TICKLAG 0.9 //The world's ticklag
 
 //Persistence Config options
 #define CONFIG_PERSIST_BASEFOLDER "Persistence_Data/" //Basefolder for all persistence shit
 #define CONFIG_PERSIST_ADMINROSTER_FOLDER "[CONFIG_PERSIST_BASEFOLDER]Admin_Data/" //Directory we targeting for files named after admin_ckeys
+#define CONFIG_PERSIST_PLAYERDATA_FOLDER "[CONFIG_PERSIST_BASEFOLDER]Player_Data/" //Directory we are targeting for playerdata
+#define CONFIG_PERSIST_ADMIN_DATUM_VERSION 0 //Version number saved into json for admin datums, DO NOT MOVE IT UP UNLESS YOU MAKE A BREAKING CHANGE TO PREV DATA AND NEED TO UPDATE IT
+#define CONFIG_PERSIST_PLAYER_DATA_VERSION 0 //Version number saved into json for player data. DO NOT MOVE IT UP UNLESS YOU MAKE A BREAKING CHANGE TO PREV DATA AND NEED TO UPDATE IT
+
+//Pref Config options
+#define CONFIG_PREF_RECC_CLIENT_FPS 50 //If they set their fps to -1 you give them this value automatically
+
+//Gameplay config options
+
+//Debug options
+#define CONFIG_DEBUG_BYPASS_INITIAL_JOIN_MENUS FALSE// Just automatically sticks you into a body and avoids any initial join menus
 
 // Error handler config options.
 #define CONFIG_ERROR_COOLDOWN 600 // The "cooldown" time for each occurrence of a unique error
@@ -30,22 +40,3 @@
 #define CONFIG_ERROR_MSG_DELAY 50 // How long to wait between messaging admins about occurrences of a unique error
 #define CONFIG_ERROR_USEFUL_LEN 2 // If there aren't at least three lines, there's no info
 
-
-
-/*
-	CONFIG_COMBAT_TYPE - Entry for the combat type, we got defines but they jus stuck on numbers.
-		Default - TYPE_COMBAT_CLICK 0
-
-		[POSSIBLE VALUES]
-		TYPE_COMBAT_CLICK - Standard click to do shit ss13
-		TYPE_COMBAT_TARGET_AND_HOTBUTTONS - Select a target and hit hotkeys to do things to them.
-*/
-/* TODO - COMBAT SYSTEM
-#define TYPE_COMBAT_CLICK 0
-#define TYPE_COMBAT_TARGET_AND_HOTBUTTONS 1
-#define CONFIG_COMBAT_TYPE TYPE_COMBAT_CLICK
-*/
-/*
-	TBASSED
-
-*/

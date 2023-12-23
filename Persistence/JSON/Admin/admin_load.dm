@@ -14,6 +14,10 @@
 			//for(var/key in loaded_list)
 			//	world.log << "[key][loaded_list[key]]"
 			//world.log << "[json_decode(reading)]"
+			
+			//We had a breaking change, and now the old data needs to be fixed before we put it back in.
+			if(loaded_list["version"] != CONFIG_PERSIST_ADMIN_DATUM_VERSION)
+				loaded_list = admin_datum_version_update(loaded_list)
 
 			var/datum/admins/current_datum = new(loaded_list["rank"], loaded_list["rights"], actualKey) // We make the datum
 			admin_datums[actualKey] = current_datum //Our current datum

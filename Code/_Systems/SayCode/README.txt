@@ -1,1 +1,0 @@
-This is a placeholder for where the saycode will end up being at some point. Right now It'll just have placeholder procs for the porting of other shits

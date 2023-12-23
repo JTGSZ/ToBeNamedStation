@@ -1,7 +1,15 @@
 /*
-	Atom has both icon and icon_state on it.
-	We also don't plan on letting people actively interact with these as they just 
+	This is just a marker on the map for reasons or whatever the fuck
 */
+/*
+	Map_Marker_lists - I imagine jus seperating all of these into their own lists would be more coder friendly
+	But instead Ill jus handle it in the most lazy manner I can and automate it on their New()
+	CONTENTS:
+		"marker_name" = list(its full of /atom/mapmarkers that share the same name)
+
+*/
+var/global/list/map_mark_list = list()
+
 
 /obj/map_mark
 	name = "Map Marker"
@@ -9,7 +17,7 @@
 	// The map marker spirit cannot be seen, perceived, or interacted with
 	invisibility = INVISIBILITY_SPIRITSPACE
 
-/obj/map_mark/New()
+/obj/map_mark/New(loc)
 	handle_map_markers_list()
 	..()
 

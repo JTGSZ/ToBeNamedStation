@@ -1,0 +1,66 @@
+Mob/char setup assembly
+
+1.
+	NEWPLAYER to SOUL
+	SOUL into the inside of BODY
+
+	Being able to make soul exit and enter multiple bodies and control them
+	Prototype of the soul/flesh divide/controls
+
+2.
+	CHAR ICON ASSEMBLY
+		Hair for now
+
+3.
+	CONFIG DEBUG option to bypass main menu
+	Main menu/char creation prototype
+
+4.
+	CHAR SAVING AND LOADING
+
+
+MISC: 
+	Spawn command for admins
+	Moving the admin add off right click context menu into something else(Cause its really easy to accidentally click it)
+
+	ICON DB - Let people submit things that can be shown on char creation during runtime. 
+	Needs a admin approval menu.
+
+	// Admin approval for public use menu can just wait
+	// Perhaps add a automatic definition dumper for the public ones that are approved so we can just put it in for runtime.
+
+	Method - GENERIC DYNAMIC DATUM - Needs Path, Needs Name, Needs status if recolorable
+	JSON - Needs Path, Needs Name, Needs status if recolorable
+	PREBUILT + JSON into Cache
+
+	If user opts to stick shit on for private use, we still need to make a json but mark it as per CKEY. While in the cache 
+	So the building will be like - 
+		WHOLE CACHE LIST
+		for shit in typesof premade incode datums
+			char_shit_cache += dicks 
+		
+		flist / json grabber
+			new datum cock = file.data.name 
+			file.data.ckey/public
+			file.data.path 
+
+
+		char_shit_cache += these cunts
+
+
+	Then when they need to change hair on a list/someone ups up char creation 
+	We just build the choice list with the data
+	Of course they need to like just get their shit instantly if they make a private, non-admin approved thing
+
+
+	// Multi body/char sharing
+	Chars have UUID and CKEY for original creator.
+	Then if we try to load it, if its inworld we just put the soul in/firstload
+
+
+Client UI Group
+Testcase: firstjoin menu
+
+Basically make a bunch of dynamic/generic client ui shits
+Ref them all on the ui templating thing so we can keep track of it all/add/remove/hide etc
+Then we just slot it in as a giant mass
