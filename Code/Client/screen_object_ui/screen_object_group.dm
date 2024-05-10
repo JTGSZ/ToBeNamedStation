@@ -50,7 +50,7 @@
 /atom/movable/screen_object
 
 /atom/movable/screen_object/mainmenu_logo
-	icon = 'zAssets/UI/logo.png'
+//	icon = 'zAssets/UI/logo.png'
 	screen_loc = "RIGHT-1,TOP-2"
 
 /atom/movable/screen_object/mainmenu_logo/New()
@@ -77,12 +77,12 @@
 	
 /atom/movable/screen_object/button/mainmenu_new_button
 	name = "New Character"
-	icon = 'zAssets/UI/new.png'
+//	icon = 'zAssets/UI/new.png'
 	screen_loc = "LEFT+1,CENTER"
 
 /atom/movable/screen_object/button/mainmenu_load_button
 	name = "Load Character"
-	icon = 'zAssets/UI/load.png'
+//	icon = 'zAssets/UI/load.png'
 	screen_loc = "RIGHT-2,CENTER"
 
 

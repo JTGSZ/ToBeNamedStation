@@ -72,6 +72,7 @@
 #include "Code\Atom\_ATOM.dm"
 #include "Code\Atom\_ATOM_MOVABLE.dm"
 #include "Code\Client\_CLIENT..dm"
+#include "Code\Client\triumph_testing.dm"
 #include "Code\Client\BrowserChat\browser_chat.dm"
 #include "Code\Client\Input\action_map.dm"
 #include "Code\Client\Input\input_handling.dm"

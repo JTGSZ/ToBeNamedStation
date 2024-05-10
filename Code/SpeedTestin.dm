@@ -1,7 +1,7 @@
 /*
 	Verb for setting up a initial admin_roster list with a host.
 */
-
+/*
 
 /mob/new_player/verb/test_transfer()
 	set category = "DEV-Debug"
@@ -28,5 +28,7 @@
 	world_msg("ASS")
 	world_msg("ASS")
 	world_msg("ASS")
+
+*/
 
 
