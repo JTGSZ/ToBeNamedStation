@@ -5,7 +5,7 @@
 
 //testenv
 /client
-	var/triumph_amount = 10284
+	var/triumph_amount = 102
 
 // Make sure to have a bool on whether they can be got pre-round or post-round instead of having a category for it.
 /datum/triumph_buy
@@ -20,9 +20,9 @@
 // Preload all the retarded shit we need for the menus
 /datum/triumph_testing/proc/preload_assets()
 	var/list/file_paths = list(
-	'zAssets/try4.png',
-	'zAssets/try4_border.png',
-	'zAssets/slop_menustyle2.css',
+	'zAssets/try5.png',
+	'zAssets/try5_border.png',
+	'zAssets/slop_menustyle3.css',
 	)
 
 	for(var/asses in file_paths)
@@ -121,39 +121,45 @@ var/datum/triumph_testing/proto_datum
 	<html>
 		<head>
 			<style>
+				@import url('https://fonts.googleapis.com/css2?family=Aclonica&display=swap');
 				@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
-				@import url('https://fonts.googleapis.com/css2?family=Jacquarda+Bastarda+9&display=swap');
-				@import url('https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap');
 				@import url('https://fonts.googleapis.com/css2?family=Nosifer&display=swap');
+				@import url('https://fonts.googleapis.com/css2?family=Jersey+25&display=swap');
 			</style>
-			<link rel='stylesheet' type='text/css' href='slop_menustyle2.css'>
+			<link rel='stylesheet' type='text/css' href='slop_menustyle3.css'>
 		</head>
 	"}
 
 	data += {"
 		<body>
-			<div style='width:100%;'>
-				<span id='triumph_quantity'> My triumphs: [linked_client.triumph_amount] Triumphs</span> 
-				<a id='triumph_close_button' href='?src=\ref[src];close_menu=1'>CLOSE MENU</a>
+			<div id='top_container_div'>
+				<div id='triumph_quantity_div'>
+					I have [linked_client.triumph_amount] Triumphs
+				</div>
 			</div> 
 			<div style='width:100%;float:left'>
-				<span id='top_categories'>CATEGORIES:</span>
 		"}
+/*
+				<div id='triumph_close_div'>
+					<a id='triumph_close_button' href='?src=\ref[src];close_menu=1'>CLOSE MENU</a>
+				</div>
+*/
 
+	data += "<div class='fadeout_line'>"
 	for(var/cat_key in central_state_data)
 		if(cat_key == current_category)
 			data += "<a class='triumph_categories_selected' href='?src=\ref[src];select_a_category=[cat_key]'><span class='bigunder_back'><span class='bigunder'></span>[cat_key]</span></a>"
 			continue
 		data += "<a class='triumph_categories_normal' href='?src=\ref[src];select_a_category=[cat_key]'>[cat_key]</a>"
-
+	data += "<hr class='fadeout_line'>"
 	data += {"
 			</div>
 			<table>
 				<thead>
 					<tr>
 						<th class='triumph_text_head'>Description</th>
-						<th class='triumph_text_head'>Triumph Cost</th>
-						<th class='triumph_text_head'>Buy Button</th>
+						<th class='triumph_text_head'>Cost</th>
+						<th class='triumph_text_head_redeem'>Redeem</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -186,7 +192,7 @@ var/datum/triumph_testing/proto_datum
 					<td class='triumph_filler_cells'><span class='triumph_cost'>[dd_titties.triumph_cost]</span></td>
 				"}
 			data += {"
-					<td class='triumph_filler_cells'><a class='triumph_text_buy' href='?src=\ref[src];handle_buy_button=\ref[dd_titties];'><span class='strikethru_back'>CONFLICT</span></a></td>
+					<td class='triumph_buy_wrapper'><a class='triumph_text_buy' href='?src=\ref[src];handle_buy_button=\ref[dd_titties];'><span style='text-align: center;'>BUY</span></a></td>
 				</tr>
 			"}
 

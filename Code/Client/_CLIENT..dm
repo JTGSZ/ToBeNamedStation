@@ -78,9 +78,14 @@ var/global/list/clients = list()
 	//change client fps sometime, it will help their shit out
 	fps = (persist_data.client_fps < 0) ? CONFIG_PREF_RECC_CLIENT_FPS : persist_data.client_fps
 
-	proto_datum = new()
-	proto_datum.linked_client = src
-	proto_datum.slop_prep()
+
+	//proto_datum = new()
+	//proto_datum.linked_client = src
+	//proto_datum.slop_prep()
+
+	proto_datum2 = new()
+	proto_datum2.linked_client = src
+	proto_datum2.menu_chain()
 
 	
 
