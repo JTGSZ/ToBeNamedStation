@@ -31,7 +31,7 @@
 //Gameplay config options
 
 //Debug options
-#define CONFIG_DEBUG_BYPASS_INITIAL_JOIN_MENUS FALSE// Just automatically sticks you into a body and avoids any initial join menus
+#define CONFIG_DEBUG_BYPASS_INITIAL_JOIN_MENUS TRUE// Just automatically sticks you into a body and avoids any initial join menus
 
 // Error handler config options.
 #define CONFIG_ERROR_COOLDOWN 600 // The "cooldown" time for each occurrence of a unique error
