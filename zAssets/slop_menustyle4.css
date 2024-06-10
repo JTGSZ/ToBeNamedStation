@@ -3,9 +3,34 @@ body {
 	color: aliceblue;
 }
 
-.center_div {
+.timer_table {
+	width: 100%;
+	table-layout:fixed;
+	border-collapse: collapse;
+}
+.timer_fluff {
+	width:70%;
+	text-align: right;
+	font-size: 20px;
+	font-weight: 600;
+}
+.timer_time {
+	text-align: left;
+	font-size: 20px;
+	font-weight: 600;
+}
+
+.delay_span {
+	font-size: 18px;
+	font-weight: 600;
+	color: #fa2222;
+}
+
+.queue_buttan {
+	width: 100%;
 	text-align: center;
 }
+
 a.join_drifter_queue, a.join_drifter_queue:link, a.join_drifter_queue:visited, a.join_drifter_queue:active {
 	text-decoration: none;
 	font-size: 18px;

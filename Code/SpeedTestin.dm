@@ -31,10 +31,3 @@
 
 */
 
-/mob/verb/output_testing()
-	set category = "DEV-Debug"
-
-	if(prob(30))
-		world_msg("Cock")
-	else(prob(20))
-		world_msg("5% cock")

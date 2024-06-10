@@ -66,7 +66,13 @@ var/datum/drifter_queue/proto_datum2
 
 	//Body tag start
 	data += "<body>"
-
+	data += "<table class='timer_table'><tr><td class='timer_fluff'>Time to next incursion:</td><td class='timer_time' id='queue_timer'>69:99</td></tr></table>"
+	data += "<div class='queue_buttan'>"
+	if(queue_joined)
+		data += "<a class='leave_drifter_queue'href='?src=\ref[src];join_queue=1'>LEAVE DRIFTER QUEUE</a>"
+	else
+		data += "<a class='join_drifter_queue'href='?src=\ref[src];join_queue=1'>ENTER DRIFTER QUEUE</a>"
+	data += "</div>"
 	data += "<br>"
 	data += "<div class='table_fluff_container'><span class='table_fluff_text'>Forecast:</span><span class='table_fluff_fadeout_line'></span></div><br>"
 	/*
@@ -77,20 +83,17 @@ var/datum/drifter_queue/proto_datum2
 	data += "<table class='wave_container'>"
 
 	data += "<tr class='wave_row'>"
-	data += "<td class='wave_entry_href'>"
-	if(queue_joined)
-		data += "<a class='leave_drifter_queue'href='?src=\ref[src];join_queue=1'>LEAVE</a>"
-	else
-		data += "<a class='join_drifter_queue'href='?src=\ref[src];join_queue=1'>JOIN</a>"
-	data += "</td>"
+	//data += "<td class='wave_entry_href'>"
+
+	//data += "</td>"
 	data += "<td class='wave_number'>NOW: </td>"
 	data += "<td class='wave_type'><a class='wave_type_hlink' href='?src=\ref[src];'>[queued_things[current_wave_number]]<span class='wave_type_hlink_tooltext'>[queued_things_tooltips[current_wave_number]]</span></a></td>"
 	data += "<td>0/[max_in_wave[current_wave_number]]</td>"
 	data += "</tr>"
-
+		//<td class='wave_entry_href'></td>
 	data += {"
 	<tr class='wave_row'>
-		<td class='wave_entry_href'></td>
+
 		<td class='wave_number'>NEXT: </td>
 		<td class='wave_type'>
 			<a class='wave_type_hlink' href='?src=\ref[src];'>[queued_things[current_wave_number+1]]<span class='wave_type_hlink_tooltext'>[queued_things_tooltips[current_wave_number+1]]</span></a>
