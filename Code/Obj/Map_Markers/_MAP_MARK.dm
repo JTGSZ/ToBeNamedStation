@@ -8,7 +8,7 @@
 		"marker_name" = list(its full of /atom/mapmarkers that share the same name)
 
 */
-var/global/list/map_mark_list = list()
+GLOB_LIST(map_mark_list) = list()
 
 
 /obj/map_mark
@@ -24,11 +24,11 @@ var/global/list/map_mark_list = list()
 //For futures sake im gonna stick this here
 /obj/map_mark/proc/handle_map_markers_list()
 	//If we find a key, and the thing attached to it is a list we r good to go
-	if( (map_mark_list["[name]"]) && (islist(map_mark_list["[name]"])) )
-		map_mark_list["[name]"] += src
+	if( (GLOB.map_mark_list["[name]"]) && (islist(GLOB.map_mark_list["[name]"])) )
+		GLOB.map_mark_list["[name]"] += src
 	else //In the offchance we can't find the key, and a list isn't in there we handle it ourselves
-		map_mark_list["[name]"] = list()
-		map_mark_list["[name]"] += src
+		GLOB.map_mark_list["[name]"] = list()
+		GLOB.map_mark_list["[name]"] += src
 
 
 /obj/map_mark/new_player_start

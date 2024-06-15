@@ -5,7 +5,7 @@
 	see: admin_holder.dm
 */
 
-var/global/list/admin_datums = list()
+GLOB_LIST(admin_datums) = list()
 
 /datum/admins
 	var/owner_ckey 		= "ERROR" //Their ckey

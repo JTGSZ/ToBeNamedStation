@@ -20,4 +20,4 @@
 				loaded_list = admin_datum_version_update(loaded_list)
 
 			var/datum/admins/current_datum = new(loaded_list["rank"], loaded_list["rights"], actualKey) // We make the datum
-			admin_datums[actualKey] = current_datum //Our current datum
+			GLOB.admin_datums[actualKey] = current_datum //Our current datum

@@ -14,6 +14,7 @@
 
 // BEGIN_INCLUDE
 #include "__DEFINES\__CONFIG__.dm"
+#include "__DEFINES\_GLOB_MACROS.dm"
 #include "__DEFINES\_TYPE_MACROS.dm"
 #include "__DEFINES\html_macros.dm"
 #include "__DEFINES\invisibility.dm"
@@ -30,6 +31,7 @@
 #include "__DEFINES\_OtherRepos\_vgstation\subsystems.dm"
 #include "__DEFINES\_OtherRepos\_vgstation\tick.dm"
 #include "__DEFINES\_OtherRepos\_vgstation\unsorted.dm"
+#include "_HELPERS\global_holder.dm"
 #include "_HELPERS\unsorted.dm"
 #include "_HELPERS\_OtherRepos\goonstation\_HELPERS\call_proc.dm"
 #include "_HELPERS\_OtherRepos\goonstation\_HELPERS\lists.dm"

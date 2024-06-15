@@ -16,7 +16,7 @@ var/next_listener_loc_update = 0
 
 //this is for ooc for now probably, could use it for announcements or some shit idk.
 /proc/route_message_all_clients(datum/message_data/msg_data)
-	for(var/client/C in clients)
+	for(var/client/C in GLOB.clients)
 		C.receive_message(msg_data)
 
 //To note, this is just meant to send shit specifically to the clients chat
@@ -34,7 +34,7 @@ var/next_listener_loc_update = 0
 
 	if(istext(given_input)) //For now, lets just deal with text
 		if(target == world) //a world message which is normally used for people debugging shit anyways
-			for(var/client/C in clients)
+			for(var/client/C in GLOB.clients)
 				if(istext(given_input))
 					if(C.browser_chat_instance)
 						C << output(url_encode(given_input), "browser_text_output:test_appends")

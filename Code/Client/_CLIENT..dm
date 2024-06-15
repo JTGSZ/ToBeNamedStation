@@ -3,7 +3,7 @@
 	So this is just a place for the shit we define on it so far
 */
 //global list of clients
-var/global/list/clients = list()
+GLOB_LIST(clients) = list()
 
 /client
 	control_freak = CONTROL_FREAK_MACROS
@@ -46,7 +46,7 @@ var/global/list/clients = list()
 	..()	//calls mob.Login()
 
 	//Enter us into the clients global list.
-	clients += src
+	GLOB.clients += src
 
 	//Time to retrieve our persistence data bro, we probably got a bunch of shit that could use it past this point.
 	persist_data = Persistence_Controller.handle_player_data(src) // You are getting something here whether you like it or not
@@ -71,8 +71,8 @@ var/global/list/clients = list()
 			new_holder.associate(src)
 
 	//If we have our ckey as a assc id in the admin_datums list, we run the refs both directions between it and this client.
-	if(admin_datums[src.ckey])
-		var/datum/admins/holder = admin_datums[src.ckey]
+	if(GLOB.admin_datums[src.ckey])
+		var/datum/admins/holder = GLOB.admin_datums[src.ckey]
 		holder.associate(src)
 
 	//change client fps sometime, it will help their shit out
@@ -91,7 +91,7 @@ var/global/list/clients = list()
 /client/Del()
 	if(holder)
 		holder.owner = null
-	clients -= src
+	GLOB.clients -= src
 
 	return ..()
 

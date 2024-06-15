@@ -26,9 +26,9 @@
 	if(!player_mind)
 		player_mind = new /datum/player_mind(key)
 
-	if(map_mark_list[MAPMARK_NEWPLAYERSTART] && islist(map_mark_list[MAPMARK_NEWPLAYERSTART]))
-		if(map_mark_list[MAPMARK_NEWPLAYERSTART].len)
-			var/obj/map_mark/chosen_mark = pick(map_mark_list[MAPMARK_NEWPLAYERSTART])
+	if(GLOB.map_mark_list[MAPMARK_NEWPLAYERSTART] && islist(GLOB.map_mark_list[MAPMARK_NEWPLAYERSTART]))
+		if(GLOB.map_mark_list[MAPMARK_NEWPLAYERSTART].len)
+			var/obj/map_mark/chosen_mark = pick(GLOB.map_mark_list[MAPMARK_NEWPLAYERSTART])
 			loc = chosen_mark.loc
 	else
 		loc = locate(2,2,1)

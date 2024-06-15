@@ -39,11 +39,11 @@ var/datum/Admin_Add_and_Remove/Admin_Add_and_Remove
 	dat += {"
 		<div
 	"}
-	for(var/ass_key in admin_datums)
+	for(var/ass_key in GLOB.admin_datums)
 		var/actualKey = ass_key
 		if(findtext(ass_key, ".json"))
 			actualKey = splicetext(ass_key, length(ass_key)-4, 0, "")
-		var/datum/admins/fuck = admin_datums[ass_key]
+		var/datum/admins/fuck = GLOB.admin_datums[ass_key]
 		dat += {"
 				 <div style="width:100%; background-color:#1f1c1c; border-style:solid; border-color: #999797">
 					<b>Ckey:</b> [actualKey]<br>
@@ -80,7 +80,7 @@ var/datum/Admin_Add_and_Remove/Admin_Add_and_Remove
 	var/mob/user = usr
 
 	var/target_key = href_list["ass_key"] //Assc key passed in, don't forget to put safety checks around here tho
-	var/datum/admins/target_datum = admin_datums[target_key]
+	var/datum/admins/target_datum = GLOB.admin_datums[target_key]
 
 	if(href_list["change_rank"])
 		var/change_rank_name = input(usr, "What would you like to change their rank to?", "Permissions Rank Name", null) as text|null
@@ -113,7 +113,7 @@ var/datum/Admin_Add_and_Remove/Admin_Add_and_Remove
 		switch(alert("Are you sure you'd like to remove [target_key] from the permissions?",, "YES","NO"))
 			if("YES")
 				target_datum.disassociate()
-				admin_datums.Remove(target_key)
+				GLOB.admin_datums.Remove(target_key)
 				qdel(target_datum)
 				usr_msg("Removed [target_key] from permissions.")
 
