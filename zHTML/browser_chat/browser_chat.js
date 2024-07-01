@@ -1,5 +1,8 @@
 
-document.addEventListener("mouseup", refocus_on_map_pane_map);
+//document.body.addEventListener("mouseup", refocus_on_map_pane_map);
+
+// Yeah Im having issues here cause it'll just refocus instead of click a href if its in the chat
+document.addEventListener("keydown", refocus_on_map_pane_map);
 
 //This is so you don't somehow find your input keys being eaten after clicking on this dumb shit
 //(They aren't, you are just sending them to browserchat which is a webpage that doesn't care about them right now)
@@ -25,3 +28,4 @@ function test_appends(received_message) {
 		html_element.scrollTop = html_element.scrollHeight - html_element.clientHeight;
 	}
 }
+

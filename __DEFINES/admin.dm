@@ -13,3 +13,5 @@
 // For iteration purposes, always keep this at the last bitflag outside of host perms
 #define R_MAX_PERMISSIONS 4
 #define R_HOST 65535
+
+

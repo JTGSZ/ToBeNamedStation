@@ -65,5 +65,5 @@
 				rp_post = "[requestor.mob.name] : [rp_post]"
 				var/datum/message_data/msg_data = new(src, rp_post, world.view)
 				msg_data.message_color = persist_data.EMOTE_text_color
-				sender.send_message(msg_data)
+				route_message_hearers(msg_data)
 

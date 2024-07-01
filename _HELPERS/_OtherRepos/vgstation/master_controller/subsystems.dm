@@ -31,7 +31,7 @@
 
 
 	// The object used for the clickable stat() button.
-	var/obj/effect/statclick/statclick
+	var/obj/statclick/statclick
 
 // Used to initialize the subsystem BEFORE the map has loaded
 /datum/subsystem/New()
@@ -168,7 +168,7 @@
 		return
 
 	if(!statclick)
-		statclick = new/obj/effect/statclick/debug("Initializing...", src)
+		statclick = new/obj/statclick/debug("Initializing...", src)
 
 	if(can_fire && !(flags & SS_NO_FIRE))
 		msg = "[round(cost,1)]ms|[round(tick_usage,1)]%|[round(ticks,0.1)]\t[msg]"

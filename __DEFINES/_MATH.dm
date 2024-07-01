@@ -1,0 +1,1 @@
+#define INFINITY 	1e31

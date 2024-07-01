@@ -15,7 +15,7 @@
 	invisibility = INVISIBILITY_SOULSPACE
 	
 	density = FALSE
-	comms_listener = TRUE
+	give_comms_listener = TRUE
 	//The current body we are supposed to be piloting.
 	var/atom/movable/the_body = null
 

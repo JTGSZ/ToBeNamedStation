@@ -483,7 +483,7 @@ var/CURRENT_TICKLIMIT = TICK_LIMIT_RUNNING
 
 /datum/controller/master/proc/stat_entry()
 	if(!statclick)
-		statclick = new/obj/effect/statclick/debug("Initializing...", src)
+		statclick = new/obj/statclick/debug("Initializing...", src)
 
 
 	stat("Master Controller:", statclick.update("(TickRate:[Master.processing]) (TickDrift:[round(Master.tickdrift)]) (Iteration:[Master.iteration])"))

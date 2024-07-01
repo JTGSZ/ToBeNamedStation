@@ -1,23 +1,23 @@
 // Clickable stat() button.
-/obj/effect/statclick
+/obj/statclick
 	var/target
 	icon = null
 
-/obj/effect/statclick/New(text, target)
+/obj/statclick/New(text, target)
 	name = text
 	src.target = target
 
-/obj/effect/statclick/proc/update(text)
+/obj/statclick/proc/update(text)
 	name = text
 	return src
 
-/obj/effect/statclick/time/Click()
+/obj/statclick/time/Click()
 	world_msg("<span class='notice'>The server time is [time2text(world.timeofday, "hh:mm:ss")].</span>")
 
-/obj/effect/statclick/debug
+/obj/statclick/debug
 	var/class
 
-/obj/effect/statclick/debug/Click()
+/obj/statclick/debug/Click()
 	if(!usr.client.holder)
 		return
 	if(!class)

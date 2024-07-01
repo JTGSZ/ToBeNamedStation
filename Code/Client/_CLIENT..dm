@@ -78,13 +78,6 @@ GLOB_LIST(clients) = list()
 	//change client fps sometime, it will help their shit out
 	fps = (persist_data.client_fps < 0) ? CONFIG_PREF_RECC_CLIENT_FPS : persist_data.client_fps
 	
-
-/client/Topic(href, href_list, hsrc)
-	//Default action:
-	//Call the hsrc object's own Topic() proc.
-	..()
-	
-
 /*
 	Same deal here, we are apparently calling Logout() on a mob we are leaving
 */
@@ -108,16 +101,6 @@ GLOB_LIST(clients) = list()
 		step(mob, dir)
 	//. = ..()
 	
-
-
-//Realistically, I don't see this being used for anything other than ooc.
-//In fact its kind of shit, but its here anyways until i need to rewrite everything.
-/client/proc/send_message(message)
-	var/datum/message_data/msg_data = new(src, world.view)
-	msg_data.message = "[key]: [message]"
-	msg_data.message_color = persist_data.OOC_text_color
-	route_message_all_clients(msg_data)
-
 //And heres send_message's dumbass companion,
 //To note we are going to actually display this message in the client's chatbox from here, so might as well let things be different per client from client potentially
 /client/proc/receive_message(datum/message_data/msg_data)

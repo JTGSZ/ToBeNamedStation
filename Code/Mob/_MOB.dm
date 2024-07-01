@@ -1,3 +1,4 @@
+GLOB_LIST(mobs_in_world) = list()
 /*
 	MOB PARENT
 */
@@ -11,10 +12,12 @@
 */
 /mob/New()
 	. = ..()
+	GLOB.mobs_in_world += src
 /*
 	Called when we are qdel'd
 */
 /mob/Destroy()
+	GLOB.mobs_in_world -= src
 	..()
 /*
 	ON_INITIAL_CONNECTION -
@@ -43,18 +46,11 @@
 /mob/Logout()
 	//world_msg("Mob Logout")
 	..()
-	
-/mob/send_message(msg_data)
-	if(!msg_data)
-		return
 
-	route_message_local(msg_data)
 
-//Well we are the only thing that can have both a listener and a client i guess, so just pass it along if we actually have a client.
 /mob/receive_message(datum/message_data/msg_data)
 	if(client)
 		client.receive_message(msg_data)
-
 /*
 	A mob with a client clicked on an atom and supercalled. 
 	Let us give them a response on the instance of their type or near it
@@ -65,7 +61,6 @@
 // A stat panel if you are on a mob.
 /mob/Stat()
 	..()
-
 	//MC Stat Panel
 	if(client && client.holder && client.inactivity < 1200)
 		if(statpanel("MC"))
@@ -92,4 +87,9 @@
 				for(var/datum/subsystem/SS in Master.subsystems)
 					SS.stat_entry()
 
+		if(statpanel("Tickets"))
+			GLOB.admin_tickets.stat_entry()
+			stat(null)
+			for(var/datum/admin_ticket/cur_ticket in GLOB.admin_tickets.open_tickets)
+				cur_ticket.stat_entry()
 	

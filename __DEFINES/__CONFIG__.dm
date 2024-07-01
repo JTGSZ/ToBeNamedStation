@@ -4,8 +4,8 @@
 
 //Server Config options
 #define CONFIG_SERVER_MIN_BYOND_VERSION 514 // Min Byond Version, don't set it low enough for guys to just crash if you usin new byond features
-#define CONFIG_SERVER_GUESTS_ENABLED TRUE //Whether guests can join or not
-#define CONFIG_SERVER_LOCALHOST_POWERS TRUE //Whether Localhost autoadmins you or not
+#define CONFIG_SERVER_GUESTS_ENABLED 	TRUE //Whether guests can join or not
+#define CONFIG_SERVER_LOCALHOST_POWERS 	TRUE //Whether Localhost autoadmins you or not
 
 //If this is set to a url, the user will attempt to download resources from it
 //There are a bunch of options avaliable, but 1 is just standard grab shit from server

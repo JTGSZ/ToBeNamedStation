@@ -10,7 +10,7 @@
 	icon_state = "gear"
 
 	density = FALSE
-	needs_comms_listener = TRUE
+	give_comms_listener = TRUE
 	see_invisible = INVISIBILITY_MAXIMUM
 
 
@@ -39,11 +39,6 @@
 		var/datum/screen_object_group/mainmenu/our_mainmenu = new()
 		our_mainmenu.apply_screenobjects_to_client(client)
 		// Placeholder UI Menu
-		//var/datum/ui/initial_join_menu/our_menu = new()
-		//our_menu.requestor = client
-		//our_menu.display_initial_join_menu()
-
-	//..()
 
 /mob/new_player/Logout()
 	..()

@@ -1,25 +1,6 @@
-
-var/next_listener_loc_update = 0
-
-//We find the listeners based on how the msg_data is setup and just deliver it to them.
-/proc/route_message_local(datum/message_data/msg_data)
-	//Time to update the positions of everything (if theres a ton of stationary shit, time for a split to another list based on non-moving)
-	if(world.time >= next_listener_loc_update) //Time to update all the listener positions everywhere.
-		for(var/mob/comms_listener/CL in comms_listeners)
-			CL.loc = get_turf(CL.attached_to)
-		next_listener_loc_update = world.time + 2
-
-	//Now we perform the local check for shit
-	for(var/mob/comms_listener/CL in hearers(world.view, get_turf(msg_data.sender))) 
-		CL.attached_to.receive_message(msg_data)
-
-
-//this is for ooc for now probably, could use it for announcements or some shit idk.
-/proc/route_message_all_clients(datum/message_data/msg_data)
-	for(var/client/C in GLOB.clients)
-		C.receive_message(msg_data)
-
-//To note, this is just meant to send shit specifically to the clients chat
+/*
+	Meant to output specifically to one client
+*/
 /proc/to_client_chat(client/C, message)
 	if(C.browser_chat_instance) //We founds a chat instance
 		C << output(url_encode(message), "browser_text_output:test_appends") // We sends their browser chat a message
@@ -27,7 +8,9 @@ var/next_listener_loc_update = 0
 		C << message //the native text output is underneath the browser, so if the first isn't avail. We will get there
 
 
-//This is just haphazardly meant to get the job done.
+/*
+	Meant to just be a catchall easy output to whatever target you give it with whatever input you give it
+*/
 /proc/ez_output(target, given_input)
 	if(!target) //we have no target
 		return

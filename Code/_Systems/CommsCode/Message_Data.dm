@@ -8,16 +8,25 @@
 */
 
 /datum/message_data
-	var/atom/sender = null //A ref to our sender
-	var/message = "No Message" //The message we are storing here.
-	var/message_color = FALSE // Do we need to set the message color?
-	var/font = FALSE // Do we need to set a font?
+//A ref to our sender
+	var/atom/sender = null
+//The message we are storing here.
+	var/message = "No Message" 
+// Do we need to set the message color?
+	var/message_color = FALSE 
 
-	//IC Vars
-	var/language = FALSE // PLACEHOLDER FOR NOW, IF I PUT IN DEFINES HOW WILL WE HAVE MODULAR CONTENT FOR IT
-	var/needs_vision = FALSE // Are we supposed to see this message with our eyes?
-	var/needs_hearing = FALSE // Are we going to hear this message?
-	var/sending_range = FALSE // Whats the range we are looking for?
+//IC Vars
+// PLACEHOLDER FOR NOW, IF I PUT IN DEFINES HOW WILL WE HAVE MODULAR CONTENT FOR IT
+	var/language = FALSE 
+
+// The range in which we are attempting to send it
+	var/sending_range = FALSE
+
+// Z levels we may be sending the message to if we are checking based on distance
+	var/list/target_z_levels
+
+// Some criteria to help the listeners handle some more detailed logic states
+	var/list/comms_flags = list(COMMS_FLAG_NORMAL)
 
 //Idk you probably only really need these three anyways.
 /datum/message_data/New(given_sender, given_message, given_sending_range)
