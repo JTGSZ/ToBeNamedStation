@@ -77,6 +77,11 @@ GLOB_LIST(clients) = list()
 
 	//change client fps sometime, it will help their shit out
 	fps = (persist_data.client_fps < 0) ? CONFIG_PREF_RECC_CLIENT_FPS : persist_data.client_fps
+
+//#warn DEBUG MESSAGE AT LINE 81 in _CLIENT.dm
+//	spawn(0.1 SECONDS)
+//		var/list/cock = list("a", "b")
+//		world_msg("[cock[5]]")
 	
 /*
 	Same deal here, we are apparently calling Logout() on a mob we are leaving

@@ -1,4 +1,4 @@
-// DM Environment file for HahaStation.dme.
+// DM Environment file for ToBeNamed.dme.
 // All manual changes should be made outside the BEGIN_ and END_ blocks.
 // New source code should be placed in .dm files: choose File/New --> Code File.
 
@@ -10,6 +10,7 @@
 // END_FILE_DIR
 
 // BEGIN_PREFERENCES
+#define DEBUG
 // END_PREFERENCES
 
 // BEGIN_INCLUDE
@@ -50,8 +51,6 @@
 #include "_HELPERS\_OtherRepos\vgstation\master_controller\subsystems.dm"
 #include "_HELPERS\_OtherRepos\vgstation\master_controller\subsystems\garbage.dm"
 #include "_HELPERS\_OtherRepos\vgstation\master_controller\subsystems\generic_process.dm"
-#include "_HELPERS\_OtherRepos\vgstation\RuntimeViewer\ErrorHandler.dm"
-#include "_HELPERS\_OtherRepos\vgstation\RuntimeViewer\ErrorViewer.dm"
 #include "Code\_WORLD.dm"
 #include "Code\SpeedTestin.dm"
 #include "Code\_Systems\_DATUM.dm"
@@ -69,6 +68,9 @@
 #include "Code\_Systems\CommsCode\Message_Data.dm"
 #include "Code\_Systems\player_mind\player_mind.dm"
 #include "Code\_Systems\Pooling\placeholder.dm"
+#include "Code\_Systems\RuntimeViewer\_WORLD_ERROR.dm"
+#include "Code\_Systems\RuntimeViewer\error_data.dm"
+#include "Code\_Systems\RuntimeViewer\error_viewer.dm"
 #include "Code\_Systems\ViewVariable\ViewVariable.dm"
 #include "Code\_Systems\ViewVariable\ViewVariable_Proclist.dm"
 #include "Code\_Systems\ViewVariable\ViewVariable_Topic.dm"
@@ -77,7 +79,7 @@
 #include "Code\Area\_AREA.dm"
 #include "Code\Atom\_ATOM.dm"
 #include "Code\Atom\_ATOM_MOVABLE.dm"
-#include "Code\Client\_CLIENT..dm"
+#include "Code\Client\_CLIENT.dm"
 #include "Code\Client\CLIENT_topic.dm"
 #include "Code\Client\BrowserChat\browser_chat.dm"
 #include "Code\Client\Input\action_map.dm"

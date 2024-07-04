@@ -33,10 +33,3 @@
 //Debug options
 #define CONFIG_DEBUG_BYPASS_INITIAL_JOIN_MENUS TRUE// Just automatically sticks you into a body and avoids any initial join menus
 
-// Error handler config options.
-#define CONFIG_ERROR_COOLDOWN 600 // The "cooldown" time for each occurrence of a unique error
-#define CONFIG_ERROR_LIMIT 9 // How many occurrences before the next will silence them
-#define CONFIG_ERROR_SILENCE_TIME 6000 // How long a unique error will be silenced for
-#define CONFIG_ERROR_MSG_DELAY 50 // How long to wait between messaging admins about occurrences of a unique error
-#define CONFIG_ERROR_USEFUL_LEN 2 // If there aren't at least three lines, there's no info
-

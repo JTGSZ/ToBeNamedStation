@@ -30,7 +30,6 @@
 	Persistence_Controller.admin_json_directory_to_datumlist() //Admin datum loadin of all of them.
 	Admin_Add_and_Remove = new() //The menu for admin permissions
 	VV_Tools = new() //Viewvariable tools
-	error_cache = new() //runtime thing
 	build_bindcomm_data_cache() // Build the command cache for user inputted keybinds to be held against
 	Master = new() //master controller
 

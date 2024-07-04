@@ -163,17 +163,26 @@
 					html += "<td class=varvalue>Ur already looking at the vars</td>" //If we don't add a data segment we get some dumb looking formatting
 					continue
 
-
-			var/list/list_sex = list()
+			var/list/html_display_list = list()
+			var/assc_check
 			for(var/cur_list_value in var_value)
-				if(isdatum(cur_list_value)) // Its a ref to something instanced lol.
-					var/datum/target_ref = cur_list_value
-					list_sex += "<a href='byond://?src=\ref[src];ViewReference=\ref[cur_list_value]'>[target_ref.type]</a><br>"
-				else
-					list_sex += "[cur_list_value]<br>"
+				if(!isnum(cur_list_value))
+					try
+						assc_check = var_value[cur_list_value]
+					catch
 
-			list_sex = jointext(list_sex, "")
-			html += "<td class=varvalue>[list_sex]</td>"
+				if(!isnull(assc_check))
+					html_display_list += "<a href='byond://?src=\ref[src];TargetList=\ref[var_value]'>View Assc List</a><br>"
+					break
+				else
+					if(isdatum(cur_list_value)) // Its a ref to something instanced lol.
+						var/datum/target_ref = cur_list_value
+						html_display_list += "<a href='byond://?src=\ref[src];ViewReference=\ref[cur_list_value]'>[target_ref.type]</a><br>"
+					else
+						html_display_list += "[cur_list_value]<br>"
+
+			html_display_list = jointext(html_display_list, "")
+			html += "<td class=varvalue>[html_display_list]</td>"
 		else
 			if(isdatum(D.vars[cur_var]) || isclient(D.vars[cur_var])) // Once again this is a ref
 				html += "<td class=varvalue><a href='byond://?src=\ref[src];ViewReference=\ref[D.vars[cur_var]]'>[D.vars[cur_var].type]</a></td>"
@@ -235,7 +244,49 @@
 	//			}
 	//			list.blur();		
 	//And here it is, our browser window, we are sending ourselves to have a onclose topic call on close too.
-	our_window = new(requestor, "variables", window_title, 600, 450, src)
+	our_window = new(requestor, "\ref[D]", window_title, 600, 450, src)
+	our_window.html_content = html
+	our_window.quickset_stylesheet(STYLESHEET_VIEW_VARIABLES)
+	our_window.fire_browser()
+
+
+//the menu
+/datum/ui/view_variable/proc/display_assc_list(var/list/given_list)
+	var/html = "<h1>List Viewer</h1>"
+	html += "<table class=vartable>"
+
+	var/current_index = 1
+	for(var/current_key in given_list)
+		var/current_value = given_list[current_key]
+
+		html += "<tr class=varrow>"
+		html += "<td class=varoptions>"
+		html += "[current_index]. "
+		html += "</td>"
+
+		html += "<td class=varname>"
+		if(isdatum(current_key)) // Its a ref to something instanced lol.
+			var/datum/target_ref = current_key
+			html += "<a href='byond://?src=\ref[src];ViewReference=\ref[current_key]'>[target_ref.type]</a>"
+		else
+			html += "[current_key]"
+		html += "</td>"
+
+		html += "<td class=varvalue>"
+		if(isdatum(current_value)) // Its a ref to something instanced lol.
+			var/datum/target_ref = current_value
+			html += "<a href='byond://?src=\ref[src];ViewReference=\ref[current_value]'>[target_ref.type]</a>"
+		else
+			html += "[current_value]"
+		html += "</td>"
+
+		html += "</tr>"
+
+		current_index++
+
+	html += "</table>"
+
+	our_window = new(requestor, "[rand(1,900)]", "List Viewer", 600, 450, src)
 	our_window.html_content = html
 	our_window.quickset_stylesheet(STYLESHEET_VIEW_VARIABLES)
 	our_window.fire_browser()

@@ -1,7 +1,4 @@
 
-/proc/time_stamp()
-	return time2text(world.timeofday, "hh:mm:ss")
-
 
 /proc/datum_info_line(var/datum/D)
 	if (!istype(D))

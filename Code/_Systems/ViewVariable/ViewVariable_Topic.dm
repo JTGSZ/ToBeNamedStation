@@ -39,4 +39,8 @@
 		if(target_object)
 			requestor.View_Variable(target_object)
 
-		
+	if(href_list["TargetList"])
+		var/list/target_list = locate(href_list["TargetList"])
+//		list_debug_msg(target_list)
+//		assc_list_debug_msg(target_list)
+		display_assc_list(target_list)
