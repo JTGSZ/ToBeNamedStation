@@ -13,12 +13,13 @@
 #define list_debug_msg(target_list) var/index = 0; for(var/i in target_list){index++; ez_output(world, "Index: [index], Value:[i]")};
 #define assc_list_debug_msg(target_list) var/index = 0; for(var/i in target_list){index++; ez_output(world, "Index: [index], Key: [i], Value: [target_list[i]]")};
 
+// world message for the world
 #define world_msg(msg) ez_output(world, msg)
 
+// This basically will log a custom error into the runtime viewer too
+#define ERROR_MSG(msg) world.Error(EXCEPTION("ERROR: [msg]"))
 
-
-
-
-#define admin_msg(msg) for(var/cur_ckey in GLOB.admin_datums){var/datum/admins/cur_holder = GLOB.admin_datums[cur_ckey]; if(cur_holder.owner){ez_output(cur_holder.owner, msg)}}
+// Just sends a message to all admins
+#define admin_msg(msg) for(var/cur_ckey in GLOB.admin_datums){var/datum/admin_data/amsg_target = GLOB.admin_datums[cur_ckey]; if(amsg_target.linked_client){ez_output(amsg_target.linked_client, msg)}}
 
 

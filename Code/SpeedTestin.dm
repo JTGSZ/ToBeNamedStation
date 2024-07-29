@@ -29,4 +29,8 @@
 	world_msg("ASS")
 	world_msg("ASS")
 
+/mob/verb/error_testing()
+	set category = "DEV-Debug"
+
+	ERROR_MSG("ASS!")
 

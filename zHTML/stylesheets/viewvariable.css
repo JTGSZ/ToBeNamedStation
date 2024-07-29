@@ -1,59 +1,59 @@
-	table 
-	{
-		border-collapse: collapse;
-		border: none;
-		width: 100%;
-		font-size: 100%;
-	}
+table 
+{
+	border-collapse: collapse;
+	border: none;
+	width: 100%;
+	font-size: 100%;
+}
 
-	a 
-	{
-		text-decoration: none;
-	}
+a 
+{
+	text-decoration: none;
+}
 
-	a:hover, a:active 
-	{
-		text-decoration: underline;
-	}
+a:hover, a:active 
+{
+	text-decoration: underline;
+}
 
-	.varoptions,.varname,.varvalue,.varhead 
-	{
-		text-align: left;
-		padding: 0.1em 0.25em;
-		border-bottom: 1px solid rgba(128, 128, 128, .5);
-		border-right: 1px solid rgba(128, 128, 128, .3);
-		vertical-align: top;
+.varoptions,.varname,.varvalue,.varhead 
+{
+	text-align: left;
+	padding: 0.1em 0.25em;
+	border-bottom: 1px solid rgba(128, 128, 128, .5);
+	border-right: 1px solid rgba(128, 128, 128, .3);
+	vertical-align: top;
 
-		overflow-wrap: break-word;
-		word-wrap: break-word;
-		word-break: break-all;
-	}
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+	word-break: break-all;
+}
 
-	.varrow:hover 
-	{
-		background-color: #eee;
-	}
+.varrow:hover 
+{
+	background-color: #eee;
+}
 
-	.varoptions
-	{
-		white-space: nowrap;
-	}
+.varoptions
+{
+	white-space: nowrap;
+}
 
-	.varname 
-	{
-		font-family: "Lucida Console", Courier, monospace;
-		font-weight: bold;
-		min-width: 10em;
-		white-space: nowrap;
-	}
+.varname 
+{
+	font-family: "Lucida Console", Courier, monospace;
+	font-weight: bold;
+	min-width: 10em;
+	white-space: nowrap;
+}
 
-	.varvalue 
-	{
-		font-style: oblique;
-		font-family: "Consolas", "Courier New", monospace;
-	}
+.varvalue 
+{
+	font-style: oblique;
+	font-family: "Consolas", "Courier New", monospace;
+}
 
-	.varoptionhelp 
-	{
-		line-height: 12px;
-	}
+.varoptionhelp 
+{
+	line-height: 12px;
+}

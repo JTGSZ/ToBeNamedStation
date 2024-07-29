@@ -19,5 +19,5 @@
 			if(loaded_list["version"] != CONFIG_PERSIST_ADMIN_DATUM_VERSION)
 				loaded_list = admin_datum_version_update(loaded_list)
 
-			var/datum/admins/current_datum = new(loaded_list["rank"], loaded_list["rights"], actualKey) // We make the datum
+			var/datum/admin_data/current_datum = new(loaded_list["cosmetic_rank"], loaded_list["admin_rights"], actualKey) // We make the datum
 			GLOB.admin_datums[actualKey] = current_datum //Our current datum

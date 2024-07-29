@@ -1,8 +1,8 @@
 /*
 	This is how we save a single admin json datum
 */
-/datum/Persistence_JSON/proc/admin_datum_to_json(datum/admins/cur_holder)
-	var owners_ckey = cur_holder.owner_ckey //Get the owners ckey from the admin datum
+/datum/Persistence_JSON/proc/admin_datum_to_json(datum/admin_data/cur_data)
+	var owners_ckey = cur_data.ckey_of_owner //Get the owners ckey from the admin datum
 
 	if(fexists("[CONFIG_PERSIST_ADMINROSTER_FOLDER][owners_ckey].json")) //check if the file already exists
 		if(!fdel("[CONFIG_PERSIST_ADMINROSTER_FOLDER][owners_ckey].json")) //delete the old file.
@@ -13,8 +13,8 @@
 	var/list/data_to_save = list() //Of course we are saving a list
 
 	//If they literally have nothing put in for the rank, we shall make them nothing
-	if(cur_holder.rank == "")
-		cur_holder.rank = "NoRank"
+	if(cur_data.cosmetic_rank == "")
+		cur_data.cosmetic_rank = "NoRank"
 
 	/*
 		Basically theres like three things we want out of a admin datum.
@@ -23,6 +23,6 @@
 		And we want the rights which is a bitflag which can also be seen as a int i guess
 	*/
 	data_to_save["version"] = CONFIG_PERSIST_ADMIN_DATUM_VERSION
-	data_to_save["rank"] = cur_holder.rank
-	data_to_save["rights"] = cur_holder.rights
+	data_to_save["cosmetic_rank"] = cur_data.cosmetic_rank
+	data_to_save["admin_rights"] = cur_data.admin_rights
 	writing << json_encode(data_to_save)

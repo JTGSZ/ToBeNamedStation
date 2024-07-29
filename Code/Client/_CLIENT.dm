@@ -8,7 +8,7 @@ GLOB_LIST(clients) = list()
 /client
 	control_freak = CONTROL_FREAK_MACROS
 
-	var/datum/admins/holder //You could potentially have a admin datum INSIDE OF YOU(r client)
+	var/datum/admin_data/admin_data //You could potentially have a admin datum INSIDE OF YOU(r client)
 	var/datum/browser_chat/browser_chat_instance //Our very own browser chat instance
 	var/datum/player_persistence_data/persist_data // A ref to our client's data on player_persistence_data, unneeded but here you go.
 
@@ -26,12 +26,8 @@ GLOB_LIST(clients) = list()
 	If null is also returned on this, we jus disconnect the person too
 */
 /client/New()
-	if(connection != "seeker")	//Invalid connection type.
-		if(connection == "web") //The webclient hasn't been updated in forever anyways.
-			if(!holder)
-				return null
-		else
-			return null
+	if(connection != "seeker" && !(CONFIG_SERVER_ALLOW_NON_SEEKER_CONNECTIONS)) //Theres always the 3d client on web if someone sets it up.. or shit like telnet i guess
+		del(src)
 
 	if(byond_version < CONFIG_SERVER_MIN_BYOND_VERSION)	//Out of date client.
 		alert(src,"Your BYOND client is out of date. Please make sure you have have at least version [world.byond_version] installed. Check for a beta update if necessary.", "Update Yo'Self", "OK")
@@ -65,30 +61,27 @@ GLOB_LIST(clients) = list()
 
 	//Admin Authorisation
 	var/static/list/localhost_addresses = list("127.0.0.1","::1")
-	if(CONFIG_SERVER_LOCALHOST_POWERS)
-		if((!address && !world.port) || (address in localhost_addresses))
-			var/datum/admins/new_holder = new("Host", R_HOST, src.ckey)
-			new_holder.associate(src)
-
-	//If we have our ckey as a assc id in the admin_datums list, we run the refs both directions between it and this client.
-	if(GLOB.admin_datums[src.ckey])
-		var/datum/admins/holder = GLOB.admin_datums[src.ckey]
-		holder.associate(src)
+	if(CONFIG_SERVER_LOCALHOST_AUTOADMIN && (!address && !world.port) || (address in localhost_addresses))
+		var/datum/admin_data/new_data = new("Localhost", ADMIN_RIGHTS_HOST, src.ckey)
+		GLOB.admin_datums[src.ckey] = new_data
+		new_data.link_to_client(src)
+	else
+		//If we have our ckey as a assc id in the admin_datums list, we run the refs both directions between it and this client.
+		if(GLOB.admin_datums[src.ckey])
+			var/datum/admin_data/target_data = GLOB.admin_datums[src.ckey]
+			target_data.link_to_client(src)
 
 	//change client fps sometime, it will help their shit out
 	fps = (persist_data.client_fps < 0) ? CONFIG_PREF_RECC_CLIENT_FPS : persist_data.client_fps
 
-//#warn DEBUG MESSAGE AT LINE 81 in _CLIENT.dm
-//	spawn(0.1 SECONDS)
-//		var/list/cock = list("a", "b")
-//		world_msg("[cock[5]]")
+
 	
 /*
 	Same deal here, we are apparently calling Logout() on a mob we are leaving
 */
 /client/Del()
-	if(holder)
-		holder.owner = null
+	if(admin_data)
+		admin_data.linked_client = null
 	GLOB.clients -= src
 
 	return ..()

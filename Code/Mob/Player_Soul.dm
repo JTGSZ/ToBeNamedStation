@@ -25,7 +25,7 @@
 /mob/player_soul/MouseDrop(over_object, src_location, over_location, src_control, over_control, params)
 	//world_msg("[over_object]")
 
-	if(src.client && usr.client.holder) // If this thing has a client, and the person mousedropping it into something else is an admin, as we get a usr from this.
+	if(src.client && usr.client.admin_data) // If this thing has a client, and the person mousedropping it into something else is an admin, as we get a usr from this.
 		if(ismob(over_object))
 			var/mob/cram_us_in = over_object
 			src.client.eye = cram_us_in

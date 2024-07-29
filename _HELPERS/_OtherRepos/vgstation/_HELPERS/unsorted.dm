@@ -37,12 +37,3 @@
 			return 0
 	return 1
 
-//Converts a rights bitfield into a string for display purposes
-/proc/rights2text(rights,seperator="")
-	if(rights & R_ADMIN)
-		. += "[seperator]+ADMIN"
-	if(rights & R_DEBUG)
-		. += "[seperator]+DEBUG"
-	if(rights & R_PERMISSIONS)
-		. += "[seperator]+PERMISSIONS"
-	return .

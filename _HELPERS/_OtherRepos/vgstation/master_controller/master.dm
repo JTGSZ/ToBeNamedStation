@@ -101,7 +101,7 @@ var/CURRENT_TICKLIMIT = TICK_LIMIT_RUNNING
 					msg += "\t [varname] = [D]([D.type])\n"
 				else
 					msg += "\t [varname] = [varval]\n"
-	world.log << msg
+	dd_msg(msg)
 	if (istype(Master.subsystems))
 		subsystems = Master.subsystems
 		spawn (10)
@@ -125,7 +125,7 @@ var/CURRENT_TICKLIMIT = TICK_LIMIT_RUNNING
 	CURRENT_TICKLIMIT = TICK_LIMIT_MC_INIT_DEFAULT
 	sortTim(subsystems, /proc/cmp_subsystem_init)
 	var/time_to_init = world.timeofday
-	world_msg("<span class='boldannounce'>Initializing subsystems...</span>")
+	world_msg("Initializing subsystems...")
 	for (var/datum/subsystem/SS in subsystems)
 		if (SS.flags & SS_NO_INIT)
 			continue
@@ -134,10 +134,8 @@ var/CURRENT_TICKLIMIT = TICK_LIMIT_RUNNING
 	CURRENT_TICKLIMIT = TICK_LIMIT_RUNNING
 	time_taken_to_init = world.timeofday - time_to_init
 
-	world << "Initializations complete in [time_taken_to_init / 10] seconds!"
-	//Todo - MC SPLIT
-	//to_chat(world, "<span class='boldannounce'>Initializations complete in [time_taken_to_init / 10] seconds!</span>")
-	world.log << "Initializations complete. Took [time_taken_to_init / 10] seconds."
+	world_msg("Initializations complete in [time_taken_to_init / 10] seconds!")
+	dd_msg("Initializations complete. Took [time_taken_to_init / 10] seconds.")
 
 	// Sort subsystems by display setting for easy access.
 	sortTim(subsystems, /proc/cmp_subsystem_display)
@@ -154,11 +152,9 @@ var/CURRENT_TICKLIMIT = TICK_LIMIT_RUNNING
 		return //this was suppose to happen.
 	//loop ended, restart the mc
 	admin_msg("MC crashed or runtimed, restarting")
-	//message_admins("MC crashed or runtimed, restarting")
 	var/rtn2 = Recreate_MC()
 	if (rtn2 <= 0)
-		admin_msg("Failed to recreate MC (Error code: [rtn2]), it's up to the failsafe now")
-		//message_admins("Failed to recreate MC (Error code: [rtn2]), it's up to the failsafe now")
+		ERROR_MSG("Failed to recreate MC (Error code: [rtn2]), it's up to the failsafe now")
 		Failsafe.defcon = 2
 
 // Main loop.
@@ -260,7 +256,7 @@ var/CURRENT_TICKLIMIT = TICK_LIMIT_RUNNING
 			subsystems_to_check = tickersubsystems
 		if (CheckQueue(subsystems_to_check) <= 0)
 			if (!SoftReset(tickersubsystems, normalsubsystems)) // JTGSZ - lobbysubsytems was in there
-				world.log << "MC: SoftReset() failed, crashing"
+				dd_msg("MC: SoftReset() failed, crashing")
 				return
 			if (!error_level)
 				iteration++
@@ -271,7 +267,7 @@ var/CURRENT_TICKLIMIT = TICK_LIMIT_RUNNING
 		if (queue_head)
 			if (RunQueue() <= 0)
 				if (!SoftReset(tickersubsystems, normalsubsystems)) // JTGSZ - lobbysubsytems was in there 
-					world.log << "MC: SoftReset() failed, crashing"
+					dd_msg("MC: SoftReset() failed, crashing")
 					return
 				if (!error_level)
 					iteration++
@@ -441,13 +437,13 @@ var/CURRENT_TICKLIMIT = TICK_LIMIT_RUNNING
 
 //resets the queue, and all subsystems, while filtering out the subsystem lists
 //	called if any mc's queue procs runtime or exit improperly.
-/datum/controller/master/proc/SoftReset(list/ticker_SS, list/normal_SS, list/lobby_SS)
+/datum/controller/master/proc/SoftReset(list/ticker_SS, list/normal_SS)
 	. = 0
-	world.log << "MC: SoftReset called, resetting MC queue state."
-	if (!istype(subsystems) || !istype(ticker_SS) || !istype(normal_SS) || !istype(lobby_SS))
-		world.log << "MC: SoftReset: Bad list contents: '[subsystems]' '[ticker_SS]' '[normal_SS]' '[lobby_SS]' Crashing!"
+	dd_msg("MC: SoftReset called, resetting MC queue state.")
+	if (!istype(subsystems) || !istype(ticker_SS) || !istype(normal_SS))
+		dd_msg("MC: SoftReset: Bad list contents: '[subsystems]' '[ticker_SS]' '[normal_SS]'  Crashing!")
 		return
-	var/subsystemstocheck = subsystems + ticker_SS + normal_SS + lobby_SS
+	var/subsystemstocheck = subsystems + ticker_SS + normal_SS 
 
 	for (var/thing in subsystemstocheck)
 		var/datum/subsystem/SS = thing
@@ -456,27 +452,27 @@ var/CURRENT_TICKLIMIT = TICK_LIMIT_RUNNING
 			subsystems -= list(SS)
 			ticker_SS -= list(SS)
 			normal_SS -= list(SS)
-			lobby_SS -= list(SS)
-			world.log << "MC: SoftReset: Found bad entry in subsystem list, '[SS]'"
+			
+			dd_msg("MC: SoftReset: Found bad entry in subsystem list, '[SS]'")
 			continue
 		if (SS.queue_next && !istype(SS.queue_next))
-			world.log << "MC: SoftReset: Found bad data in subsystem queue, queue_next = '[SS.queue_next]'"
+			dd_msg("MC: SoftReset: Found bad data in subsystem queue, queue_next = '[SS.queue_next]'")
 		SS.queue_next = null
 		if (SS.queue_prev && !istype(SS.queue_prev))
-			world.log << "MC: SoftReset: Found bad data in subsystem queue, queue_prev = '[SS.queue_prev]'"
+			dd_msg("MC: SoftReset: Found bad data in subsystem queue, queue_prev = '[SS.queue_prev]'")
 		SS.queue_prev = null
 		SS.queued_priority = 0
 		SS.queued_time = 0
 		SS.state = SS_IDLE
 	if (queue_head && !istype(queue_head))
-		world.log << "MC: SoftReset: Found bad data in subsystem queue, queue_head = '[queue_head]'"
+		dd_msg("MC: SoftReset: Found bad data in subsystem queue, queue_head = '[queue_head]'")
 	queue_head = null
 	if (queue_tail && !istype(queue_tail))
-		world.log << "MC: SoftReset: Found bad data in subsystem queue, queue_tail = '[queue_tail]'"
+		dd_msg("MC: SoftReset: Found bad data in subsystem queue, queue_tail = '[queue_tail]'")
 	queue_tail = null
 	queue_priority_count = 0
 	queue_priority_count_bg = 0
-	world.log << "MC: SoftReset: Finished."
+	dd_msg("MC: SoftReset: Finished.")
 	. = 1
 
 

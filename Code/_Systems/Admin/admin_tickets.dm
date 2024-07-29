@@ -75,7 +75,7 @@ GLOB_VAR(datum/admin_ticket_holder/admin_tickets) = new()
 
 	for(var/client/C in GLOB.clients)
 		if(C.ckey in participating_ckeys)
-			if(C.holder) // Give them some admin buttons as these participants are admins
+			if(C.admin_data) // Give them some admin buttons as these participants are admins
 				cmd_list = "[cmd_list] (<a href='byond://?src=\ref[src];TicketCLOSE=1'>Close</a>)"
 
 			first_message = "[first_message] [cmd_list]"
@@ -107,7 +107,7 @@ GLOB_VAR(datum/admin_ticket_holder/admin_tickets) = new()
 
 			for(var/client/C in GLOB.clients)
 				if(C.ckey in participating_ckeys)
-					if(C.holder) // Give them some admin buttons as these participants are admins
+					if(C.admin_data) // Give them some admin buttons as these participants are admins
 						cmd_list = "[cmd_list] (<a href='byond://?src=\ref[src];TicketCLOSE=1'>Close</a>)"
 
 					reply_message = "[reply_message] [cmd_list]"

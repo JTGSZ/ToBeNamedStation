@@ -1,0 +1,88 @@
+body
+{
+	padding: 0;
+	margin: 0;
+	background-color: #000000;
+	font-size: 16px;
+	color: #ffffff;
+	line-height: 170%;
+}
+
+.one_segment
+{
+	width: 99%;
+	border: 1px solid rgb(211, 0, 211);
+}
+
+.one_hundred_percent
+{
+	width: 99%;
+}
+.label_segment
+{
+	font-family: Tahoma, "Trebuchet MS", sans-serif;
+	font-size: 18px;
+	font-weight: bold;
+}
+.segment_percent_td
+{
+
+	text-align: left;
+}
+.far_right_td
+{
+
+	text-align: right;
+}
+
+a, a:link, a:visited, a:active, .linkOn, .linkOff
+{
+	color: #ffffff;
+	text-decoration: none;
+	background: #40628a;
+	border: 1px solid #161616;
+	padding: 1px 4px 1px 4px;
+	margin: 0 2px 0 0;
+	cursor:default;
+}
+
+a:hover{
+    color: #ffffff;
+    background: #5582b6;
+    border-color: #000000;
+    text-decoration-line: underline;
+}
+a.toggled_off, a.toggled_off:link, a.toggled_off:visited, a.toggled_off:active
+{
+	color: #ffffff;
+	text-decoration: none;
+	background: #7c0000;
+	border: 1px solid #161616;
+	padding: 1px 4px 1px 4px;
+	margin: 0 2px 0 0;
+	cursor:default;
+}
+
+a.toggled_off:hover {
+    color: #ffffff;
+    background: #b10000;
+    text-decoration-line: underline;
+}
+
+a.toggled_on, a.toggled_on:link, a.toggled_on:visited, a.toggled_on:active
+{
+	color: #ffffff;
+	text-decoration: none;
+	background: #008b00;
+	border: 1px solid #161616;
+	padding: 1px 4px 1px 4px;
+	margin: 0 2px 0 0;
+	cursor:default;
+}
+
+a.toggled_on:hover {
+    color: #ffffff;
+    background: #00c700;
+    border-color: #000000;
+    text-decoration-line: underline;
+}

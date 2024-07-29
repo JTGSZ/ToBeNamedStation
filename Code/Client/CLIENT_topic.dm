@@ -1,7 +1,15 @@
 
 
-
-/client/Topic(href, href_list)
+/*
+https://www.byond.com/docs/ref/#/client/proc/Topic
+href
+	The topic text (everything after the '?' in the full href).
+href_list
+	List of key/value pairs in href (produced from params2list(href)).
+hsrc
+	The object referenced by the "src" parameter in href or null if none.
+*/
+/client/Topic(href, href_list, hsrc)
 	..()
 	if(href_list["AdminMSGreply"])
 		var/client/target_client = usr

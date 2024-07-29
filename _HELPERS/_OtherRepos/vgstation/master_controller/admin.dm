@@ -18,7 +18,7 @@
 	var/class
 
 /obj/statclick/debug/Click()
-	if(!usr.client.holder)
+	if(!usr.client.admin_data)
 		return
 	if(!class)
 		if(istype(target, /datum/subsystem))
@@ -40,7 +40,7 @@
 	set name = "Restart Controller"
 	set desc = "Restart one of the various periodic loop controllers for the game (be careful!)"
 
-	if (!holder)
+	if (!admin_data)
 		return
 
 	switch (controller)
@@ -58,7 +58,7 @@
 	set name = "debug controller"
 	set desc = "debug the various periodic loop controllers for the game (be careful!)."
 
-	if (!holder)
+	if (!admin_data)
 		return
 
 	switch (controller)

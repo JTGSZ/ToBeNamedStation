@@ -62,7 +62,7 @@ GLOB_LIST(mobs_in_world) = list()
 /mob/Stat()
 	..()
 	//MC Stat Panel
-	if(client && client.holder && client.inactivity < 1200)
+	if(client && client.admin_data && client.inactivity < 1200)
 		if(statpanel("MC"))
 			stat("Location:", "([x], [y], [z])")
 			stat("CPU:", "[world.cpu]")

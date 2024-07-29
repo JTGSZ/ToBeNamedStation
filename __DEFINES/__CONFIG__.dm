@@ -5,7 +5,8 @@
 //Server Config options
 #define CONFIG_SERVER_MIN_BYOND_VERSION 514 // Min Byond Version, don't set it low enough for guys to just crash if you usin new byond features
 #define CONFIG_SERVER_GUESTS_ENABLED 	TRUE //Whether guests can join or not
-#define CONFIG_SERVER_LOCALHOST_POWERS 	TRUE //Whether Localhost autoadmins you or not
+#define CONFIG_SERVER_LOCALHOST_AUTOADMIN TRUE //Whether Localhost autoadmins you or not
+#define CONFIG_SERVER_ALLOW_NON_SEEKER_CONNECTIONS FALSE // Whether we allow all the random shit like telnet, or the 3d webclient to connect
 
 //If this is set to a url, the user will attempt to download resources from it
 //There are a bunch of options avaliable, but 1 is just standard grab shit from server
@@ -22,7 +23,7 @@
 #define CONFIG_PERSIST_BASEFOLDER "Persistence_Data/" //Basefolder for all persistence shit
 #define CONFIG_PERSIST_ADMINROSTER_FOLDER "[CONFIG_PERSIST_BASEFOLDER]Admin_Data/" //Directory we targeting for files named after admin_ckeys
 #define CONFIG_PERSIST_PLAYERDATA_FOLDER "[CONFIG_PERSIST_BASEFOLDER]Player_Data/" //Directory we are targeting for playerdata
-#define CONFIG_PERSIST_ADMIN_DATUM_VERSION 0 //Version number saved into json for admin datums, DO NOT MOVE IT UP UNLESS YOU MAKE A BREAKING CHANGE TO PREV DATA AND NEED TO UPDATE IT
+#define CONFIG_PERSIST_ADMIN_DATUM_VERSION 1 //Version number saved into json for admin datums, DO NOT MOVE IT UP UNLESS YOU MAKE A BREAKING CHANGE TO PREV DATA AND NEED TO UPDATE IT
 #define CONFIG_PERSIST_PLAYER_DATA_VERSION 0 //Version number saved into json for player data. DO NOT MOVE IT UP UNLESS YOU MAKE A BREAKING CHANGE TO PREV DATA AND NEED TO UPDATE IT
 
 //Pref Config options

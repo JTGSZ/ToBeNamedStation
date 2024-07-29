@@ -1,6 +1,6 @@
 GLOB_VAR(datum/error_viewer/error_viewer) = new()
 
-/client/proc/view_runtimes()
+/client/proc/View_Runtimes()
 	set name = "View Runtimes"
 	set desc = "Open the Runtime Viewer"
 	set category = "Debug"

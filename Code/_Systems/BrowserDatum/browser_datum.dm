@@ -59,7 +59,7 @@
 //I don't see any particular point in like overriding the send of the browse tho, nor the join of the main html content.
 /datum/browser/proc/fire_browser()
 	if((!ismob(target_user)) && (!isclient(target_user))) //If you didn't hand us a client or mob then what the fuck do you want us to send a browser page to?
-		admin_msg("WE ARE GETTIN AN ATTEMPT TO SEND A BROWSER POPUP TO SOMETHING RETARDWED")
+		ERROR_MSG("WE ARE GETTIN AN ATTEMPT TO SEND A BROWSER POPUP TO SOMETHING RETARDWED")
 		return
 
 	//If you didn't set some config values, we just put in some defaults here.
@@ -103,7 +103,7 @@
 		var/string_to_attach = FALSE // To save on repeat code, basically if this still has something in it after the external file segment it gets crammed in the bottom of the body.
 		for(var/cur_itr in attached_external_files)
 			if(!isfile(cur_itr))
-				admin_msg("A NON-PATH: [cur_itr] MADE IT INTO AN ATTACHED_EXTERNAL_FILES LIST ON A BROWSER FIRE")
+				ERROR_MSG("A NON-PATH: [cur_itr] MADE IT INTO AN ATTACHED_EXTERNAL_FILES LIST ON A BROWSER FIRE")
 				continue
 
 			var/itr_2_str = "[cur_itr]" //Well, we know we got a path. Now to convert it to a string and split it... yeah. If you see this feel free to do somethin
@@ -124,9 +124,9 @@
 					target_user << browse_rsc(cur_itr, ass2)
 					string_to_attach = "<link rel='stylesheet' type='text/css' href='[ass2]'>"
 				if("html")
-					admin_msg("FILE FORMAT: external html file needs its path on external_html_file")
+					ERROR_MSG("FILE FORMAT: external html file needs its path on external_html_file")
 				else
-					admin_msg("FILE FORMAT:[itr_2_str] NEEDS SUPPORT")
+					ERROR_MSG("FILE FORMAT:[itr_2_str] NEEDS SUPPORT")
 
 			if(attached_external_files[cur_itr] == LOAD_AFTER_HTML_CONTENT)
 				html_content += string_to_attach // Keep in mind we already (hopefully) all the html content in already, so this goes to the bottom.
@@ -169,7 +169,7 @@
 	if(attached_external_files.len)
 		for(var/cur_itr in attached_external_files)
 			if(!isfile(cur_itr))
-				admin_msg("A NON-PATH: [cur_itr] MADE IT INTO AN ATTACHED_EXTERNAL_FILES LIST ON A BROWSER FIRE")
+				ERROR_MSG("A NON-PATH: [cur_itr] MADE IT INTO AN ATTACHED_EXTERNAL_FILES LIST ON A BROWSER FIRE")
 				continue
 
 			target_user << browse_rsc(cur_itr) // Just give it to them, it'll have the same name as the filename, and we don't need anything else really.
@@ -230,5 +230,6 @@
 			attach_file(STYLESHEET_SS13_COMMON, LOAD_BEFORE_HTML_CONTENT)
 		if(STYLESHEET_VIEW_VARIABLES)
 			attach_file(STYLESHEET_VIEW_VARIABLES, LOAD_BEFORE_HTML_CONTENT)
-
+		if(STYLESHEET_ADMIN_RIGHTS_MENU, LOAD_BEFORE_HTML_CONTENT)
+			attach_file(STYLESHEET_ADMIN_RIGHTS_MENU)
 
