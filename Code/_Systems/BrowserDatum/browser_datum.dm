@@ -96,6 +96,7 @@
 	html_head_content += {"
 			<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+			<link rel='stylesheet' type='text/css' href='__universal_stylesheet.css'>
 	"}
 
 	// In the off-chance you want to cram files into the users rsc via this and then use them in a browser datum here you go I guess.

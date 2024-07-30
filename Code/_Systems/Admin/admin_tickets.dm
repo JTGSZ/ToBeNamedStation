@@ -78,9 +78,8 @@ GLOB_VAR(datum/admin_ticket_holder/admin_tickets) = new()
 			if(C.admin_data) // Give them some admin buttons as these participants are admins
 				cmd_list = "[cmd_list] (<a href='byond://?src=\ref[src];TicketCLOSE=1'>Close</a>)"
 
-			first_message = "[first_message] [cmd_list]"
+			first_message = span_redtext("[first_message] [cmd_list]")
 			var/datum/message_data/msg_data = new(caller_client, first_message)
-			msg_data.message_color = "#ff0000"
 			C.receive_message(msg_data)
 
 /datum/admin_ticket/Topic(href, href_list)
@@ -110,9 +109,8 @@ GLOB_VAR(datum/admin_ticket_holder/admin_tickets) = new()
 					if(C.admin_data) // Give them some admin buttons as these participants are admins
 						cmd_list = "[cmd_list] (<a href='byond://?src=\ref[src];TicketCLOSE=1'>Close</a>)"
 
-					reply_message = "[reply_message] [cmd_list]"
+					reply_message = span_redtext("[reply_message] [cmd_list]")
 					var/datum/message_data/msg_data = new(caller_client, reply_message)
-					msg_data.message_color = "#ff0000"
 					C.receive_message(msg_data)
 
 	if(href_list["TicketCLOSE"])
@@ -120,13 +118,12 @@ GLOB_VAR(datum/admin_ticket_holder/admin_tickets) = new()
 		GLOB.admin_tickets.open_tickets -= src
 		GLOB.admin_tickets.closed_tickets += src
 
-		var/message = "Ticket #[ticket_number] closed by [caller_client.key]"
+		var/message = span_redtext("Ticket #[ticket_number] closed by [caller_client.key]")
 		ticket_log += message
 
 		for(var/client/C in GLOB.clients)
 			if(C.ckey in participating_ckeys)
 				var/datum/message_data/msg_data = new(caller_client, message)
-				msg_data.message_color = "#ff0000"
 				C.receive_message(msg_data)
 
 

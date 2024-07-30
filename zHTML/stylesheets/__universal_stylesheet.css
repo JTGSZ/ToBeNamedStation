@@ -1,0 +1,10 @@
+/*
+	Universal stylesheet crammed into many things, there is a file with macros to help slop these out faster.
+	TIED MACRO FILE NAME: __SPAN_MACROS.dm
+*/
+
+.test_redtext { color: red; }
+
+.purpletext {color: #940080;}
+.midblue {color: #00aeff;}
+.neongreen {color: #00ff40}

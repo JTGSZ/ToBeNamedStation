@@ -3,9 +3,8 @@
 	set name = "say"
 	set category = "IC"
 
-	message = "[name] : [message]"
+	message = span_IC_color("[name] : [message]")
 	var/datum/message_data/msg_data = new(src, message, world.view)
-	msg_data.message_color = client.persist_data.IC_text_color
 	route_message_hearers(msg_data)
 
 //But as for a ooc message, we can just handle everything right here.
@@ -14,8 +13,7 @@
 	set category = "OOC"
 
 	var/datum/message_data/msg_data = new(src, world.view)
-	msg_data.message = "[key]: [message]"
-	msg_data.message_color = persist_data.OOC_text_color
+	msg_data.message = span_OOC_color("[key]: [message]")
 	route_message_all_clients(msg_data)
 
 /*
@@ -26,9 +24,8 @@ Always capped because lmao they are yelling
 	set name = "yell"
 	set category = "IC"
 
-	message = "[name]: yells \"[message]\""
+	message = span_IC_color("[name]: yells \"[message]\"")
 	var/datum/message_data/msg_data = new(src, message, 32)
-	msg_data.message_color = client.persist_data.IC_text_color
 	route_message_distance(msg_data)
 
 /* 
@@ -40,8 +37,8 @@ Always capped because lmao they are yelling
 	set name = "emote"
 	set category = "IC"
 
+	message = span_EMOTE_color("[message]")
 	var/datum/message_data/msg_data = new(src, message, world.view)
-	msg_data.message_color = client.persist_data.EMOTE_text_color
 	route_message_hearers(msg_data)
 
 /* 
@@ -52,8 +49,8 @@ Always capped because lmao they are yelling
 	set name = "whisper"
 	set category = "IC"
 
+	message = span_IC_color("[message]")
 	var/datum/message_data/msg_data = new(src, message, 2)
-	msg_data.message_color = client.persist_data.IC_text_color
 	route_message_hearers(msg_data)
 
 
@@ -91,8 +88,8 @@ Always capped because lmao they are yelling
 		if(telepathy_two_way)
 			message = "[target_message] (<a href='byond://?src=\ref[src];TelepathyREPLY=1'>Reply</a>)"
 
+		message = span_purple(message)
 		var/datum/message_data/msg_data = new(src, message, world.view)
-		msg_data.message_color = "#940080"
 		target_mob.client.receive_message(msg_data)
 	
 
@@ -128,9 +125,8 @@ Add variable to give the ability to see thinks (read mind)
 	set name = "Think"
 	set category = "IC"
 
-	message = "[name] thinks \"[message]\""
+	message = span_EMOTE_color("[name] thinks \"[message]\"")
 	var/datum/message_data/msg_data = new(src, message, world.view)
-	msg_data.message_color = client.persist_data.EMOTE_text_color
 	msg_data.comms_flags = list(COMMS_FLAG_THOUGHT)
 	route_message_distance(msg_data)
 
@@ -159,8 +155,7 @@ Prompts whenever time is quarter way through its count rounded down.
 /mob/proc/begin_verbal_countdown(number)
 	set waitfor = 0
 	for(var/i = number, i >= 0, i--)
-		var/datum/message_data/msg_data = new(src, "[i]", world.view)
-		msg_data.message_color = client.persist_data.EMOTE_text_color
+		var/datum/message_data/msg_data = new(src, span_EMOTE_color("[i]"), world.view)
 		route_message_hearers(msg_data)
 		sleep(1 SECONDS)
 
@@ -185,10 +180,9 @@ Not single line please for the love of god
 	if(target_mob)
 		var/target_message = input(usr, "What would you like to send?") as message
 		if(target_message)
-			target_message = "[src.key]: [target_message] (<a href='byond://?src=\ref[src];AdminMSGreply=1'>Reply</a>)"
+			target_message = span_purple("[src.key]: [target_message] (<a href='byond://?src=\ref[src];AdminMSGreply=1'>Reply</a>)")
 
 			var/datum/message_data/msg_data = new(src.mob, target_message)
-			msg_data.message_color = "#940080"
 			target_mob.client.receive_message(msg_data)	
 			
 
@@ -204,8 +198,8 @@ Blue Text
 	set name = "Global Announce"
 	set category = "Admin"
 
+	message = span_midblue(message)
 	var/datum/message_data/msg_data = new(src, message)
-	msg_data.message_color = "#00aeff"
 	route_message_all_clients(msg_data)
 /*
 Admin Narrate
@@ -218,8 +212,8 @@ Yellow Text
 	set name = "Local Narrate"
 	set category = "Admin"
 
+	message = span_midblue(message)
 	var/datum/message_data/msg_data = new(src.mob, message, 64)
-	msg_data.message_color = "#00aeff"
 	route_message_distance(msg_data)
 /*
 Admin Z-Message
@@ -230,8 +224,8 @@ Red Text
 	set name = "Map Narrate"
 	set category = "Admin"
 
+	message = span_redtext(message)
 	var/datum/message_data/msg_data = new(src.mob, message, INFINITY)
-	msg_data.message_color = "#ff0000"
 	route_message_distance(msg_data)
 /*
 Admin Global Message
@@ -242,8 +236,8 @@ Green Text
 	set name = "Global Narrate"
 	set category = "Admin"
 
+	message = span_neongreen(message)
 	var/datum/message_data/msg_data = new(src.mob, message, world.view)
-	msg_data.message_color = "#00ff40"
 	route_message_all_clients(msg_data)
 
 /*
@@ -269,8 +263,8 @@ Purple Text
 		if(target_message)
 			message = target_message
 
+		message = span_purple(message)
 		var/datum/message_data/msg_data = new(src.mob, message, world.view)
-		msg_data.message_color = "#940080"
 		target_mob.client.receive_message(msg_data)
 
 

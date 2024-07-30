@@ -15,6 +15,7 @@
 
 // BEGIN_INCLUDE
 #include "__DEFINES\__CONFIG__.dm"
+#include "__DEFINES\__SPAN_MACROS.dm"
 #include "__DEFINES\_ADMIN_RIGHTS.dm"
 #include "__DEFINES\_GLOB_MACROS.dm"
 #include "__DEFINES\_MATH.dm"

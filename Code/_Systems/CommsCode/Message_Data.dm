@@ -12,8 +12,6 @@
 	var/atom/sender = null
 //The message we are storing here.
 	var/message = "No Message" 
-// Do we need to set the message color?
-	var/message_color = FALSE 
 
 //IC Vars
 // PLACEHOLDER FOR NOW, IF I PUT IN DEFINES HOW WILL WE HAVE MODULAR CONTENT FOR IT

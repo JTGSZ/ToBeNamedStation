@@ -62,8 +62,7 @@
 			if(sender)
 				var/datum/player_persistence_data/persist_data = player_persistence_data_cache["[requestor.ckey]"]
 				//The naming part will prob need rewritten
-				rp_post = "[requestor.mob.name] : [rp_post]"
+				rp_post = "<span style=\"color:[persist_data.EMOTE_text_color]\">[requestor.mob.name] : [rp_post]</span>"
 				var/datum/message_data/msg_data = new(src, rp_post, world.view)
-				msg_data.message_color = persist_data.EMOTE_text_color
 				route_message_hearers(msg_data)
 

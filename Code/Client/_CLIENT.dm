@@ -44,6 +44,8 @@ GLOB_LIST(clients) = list()
 	//Enter us into the clients global list.
 	GLOB.clients += src
 
+	src << browse_rsc('zHTML/stylesheets/__universal_stylesheet.css')
+
 	//Time to retrieve our persistence data bro, we probably got a bunch of shit that could use it past this point.
 	persist_data = Persistence_Controller.handle_player_data(src) // You are getting something here whether you like it or not
 	sync_input_keymaps() //Sync the input keymaps.
@@ -102,7 +104,7 @@ GLOB_LIST(clients) = list()
 //And heres send_message's dumbass companion,
 //To note we are going to actually display this message in the client's chatbox from here, so might as well let things be different per client from client potentially
 /client/proc/receive_message(datum/message_data/msg_data)
-	var/parsed_data = "<span style=\"color:[msg_data.message_color]\">[msg_data.message]</span>"
+	var/parsed_data = "[msg_data.message]"
 	to_client_chat(src, parsed_data)
 	
 
